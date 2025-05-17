@@ -8,7 +8,7 @@ const Filter = ({user}) => {
       {/* Filter Section */}
       <div className="flex flex-col md:flex-row md:space-x-3 space-y-3 md:space-y-0 w-full max-w-6xl px-3 justify-center items-center">
         {/* Add Tuition Button */}
-        {user?.role === 'Teacher' && user.is_staff && ( 
+        {(user?.role === 'Teacher' || user?.is_staff) && (
         <Link to="/tuition-form"><button className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow hover:shadow-md group">
           <GrAddCircle className="text-lg group-hover:rotate-90 transition-transform duration-300" />
           <span className="font-medium">Add Tuition</span>
