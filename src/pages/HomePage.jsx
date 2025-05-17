@@ -54,11 +54,10 @@ const Temppo = () => {
                     {tuition.subjects}
                   </div>
                   <h3 className="text-xl font-semibold text-gray-800 mt-2">
-                    Advanced Calculus
+                    {tuition.title}
                   </h3>
                   <p className="mt-2 text-gray-600">
-                    Master calculus concepts with our expert tutors. Perfect for
-                    high school and college students.
+                    {tuition.sub_title}
                   </p>
                   <div className="mt-4">
                     <button className="text-blue-600 hover:text-blue-800 font-medium">
@@ -111,7 +110,7 @@ const Temppo = () => {
                 <h3 className="text-xl font-semibold text-gray-800">
                   {teacher.first_name} {teacher.last_name}
                 </h3>
-                <p className="text-blue-600 mb-2">Mathematics</p>
+                <p className="text-blue-600 mb-2">{teacher.qualifications}</p>
                 <p className="text-gray-600 text-sm mb-4">
                   {teacher.experience}
                 </p>
@@ -122,7 +121,7 @@ const Temppo = () => {
             )}
           </div>
           <div className="text-center mt-12" data-aos="fade-up">
-            <Link to="/tuitions"><button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+            <Link to="/teachers"><button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
               Meet All Teachers
             </button></Link>
           </div>
