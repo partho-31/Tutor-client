@@ -9,6 +9,7 @@ const EditProfileInfo = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -26,9 +27,9 @@ const EditProfileInfo = () => {
   const onSubmit = async (formData) => {
     try {
        const res = await updateUserProfile(formData);
-      console.log(res)
+      
       if (res.success) {
-        console.log("Profile updated successfully!");
+        reset()
       } 
     } catch (error) {
       console.error("Error updating profile:", error);

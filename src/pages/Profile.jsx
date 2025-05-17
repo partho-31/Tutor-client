@@ -7,7 +7,7 @@ import useAuthContext from "../hooks/useAuthContext";
 
 const StudentPortal = () => {
   const { user } = useAuthContext()
-  console.log(user)
+  
   return (
       <div className="w-full flex-1 p-6 md:p-10">
         <ProfileCard user={user}/>

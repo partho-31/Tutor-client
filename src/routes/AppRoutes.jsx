@@ -57,6 +57,7 @@ const AppRoutes = () => {
         >
           <Route index element={<Profile />} />
           <Route path="enrolledTuition" element={<EnrolledTuition />} />
+          <Route path="providedTuition" element={<EnrolledTuition />} />
           <Route path="editProfile" element={<EditProfileInfo />} />
           <Route path="upload-img" element={<PhotoUpload />} />
           <Route path="changePassword" element={<PasswordChange />} />
