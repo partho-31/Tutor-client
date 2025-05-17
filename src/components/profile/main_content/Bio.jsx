@@ -1,5 +1,5 @@
 
-const Bio = () => {
+const Bio = ({user}) => {
   return (
     <div>
       <div className="lg:col-span-3">
@@ -11,10 +11,7 @@ const Bio = () => {
           </div>
 
           <div className="font-serif text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Exercitationem quae quia odio praesentium omnis labore perferendis
-            modi consequuntur voluptatibus maiores rem facilis, fugiat repellat
-            nisi harum animi repudiandae ab at?
+            {user.bio}
           </div>
         </div>
       </div>

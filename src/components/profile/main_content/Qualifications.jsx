@@ -1,5 +1,5 @@
 
-const Qualifications = () => {
+const Qualifications = ({user}) => {
   return (
     <div>
       <div className="bg-white rounded-2xl shadow-md p-6">
@@ -8,9 +8,10 @@ const Qualifications = () => {
         </h2>
 
         <div className="space-y-5">
-          <h1>Qualifications 1</h1>
-          <h1>Qualifications 2</h1>
-          <h1>Qualifications 3</h1>
+          <h1>
+            {user.qualifications}
+          </h1>
+          
         </div>
       </div>
     </div>

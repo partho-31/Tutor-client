@@ -18,11 +18,11 @@ const StudentPortal = () => {
           <PersonalInfo user={user}/>
 
           {/* Qualifiactions */}
-          <Qualifications />
+          <Qualifications user={user}/>
         </div>
         <div>
           {/* Bio */}
-          <Bio/>
+          <Bio user={user}/>
         </div>
       </div>
     
