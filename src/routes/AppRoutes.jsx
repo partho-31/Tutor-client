@@ -16,13 +16,14 @@ import PaymentCancel from "../components/payment/PaymentCancel";
 import PaymentFailed from "../components/payment/PaymentFailed";
 import PasswordChange from "../components/profile/ChangePassword";
 import ProfileLayout from "../layouts/ProfileLayout";
-import EnrolledTuition from "../pages/EnrolledTuition";
 import ForgetPassword from "../pages/ForgetPassword";
 import ResetPasswordConfirm from "../pages/ResetPasswordConfirm";
 import PhotoUpload from "../components/profile/edit/PhotoUpload";
 import EditProfileInfo from "../components/profile/edit/EditProfileInfo";
 import AddTuitionForm from "../components/tuitions/form/TuitionForm";
 import PrivateRoute from "./PrivateRoute";
+import ProvidedTuition from "../components/profile/ProvidedTuition";
+import EnrolledTuition from "../components/profile/EnrolledTuition";
 
 const AppRoutes = () => {
   return (
@@ -57,7 +58,7 @@ const AppRoutes = () => {
         >
           <Route index element={<Profile />} />
           <Route path="enrolledTuition" element={<EnrolledTuition />} />
-          <Route path="providedTuition" element={<EnrolledTuition />} />
+          <Route path="providedTuition" element={<ProvidedTuition />} />
           <Route path="editProfile" element={<EditProfileInfo />} />
           <Route path="upload-img" element={<PhotoUpload />} />
           <Route path="changePassword" element={<PasswordChange />} />

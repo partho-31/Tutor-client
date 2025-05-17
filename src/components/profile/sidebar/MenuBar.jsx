@@ -45,7 +45,7 @@ const MenuBar = () => {
           {user.applied_tuition? <Link to="enrolledTuition">
             <li className="flex items-center p-3 lg:p-4 rounded-lg hover:bg-blue-700/50 transition-all">
               <FiBookOpen className="h-5 w-5 mr-2 lg:mr-3" />
-              <span className="text-sm lg:text-base">Applied Tuition</span>
+              <span className="text-sm lg:text-base">Enrolled Tuition</span>
             </li>
           </Link> : " "}
         </ul>
