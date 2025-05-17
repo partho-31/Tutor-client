@@ -1,9 +1,7 @@
 
 import TuitionCard from "./card/TuitionCard.jsx";
-import useFetchTuitions from "../../hooks/useFetchTuitions.js";
 
-const TuitionList = () => {
-  const { tuitions, loading } = useFetchTuitions();
+const TuitionList = ({tuitions,loading}) => {
   return (
     <div className="container mx-auto px-6 ">
       {loading && (
