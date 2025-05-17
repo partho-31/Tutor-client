@@ -2,7 +2,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import useAuthContext from "../../hooks/useAuthContext";
 
 const ProvidedTuition = () => {
-  const { user } = useAuthContext();
+  const { user } = useAuthContext()
   return (
     <div className="w-full flex-1 p-6 md:p-10 space-y-6">
       {user?.provided_tuition?.map((tuition, index) => (
