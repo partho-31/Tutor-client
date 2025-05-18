@@ -76,7 +76,7 @@ const TuitionDetails = () => {
               <DetailsAboutCourse tuition={tuition}/>
 
               {/* Reviews Section */}
-              <TuitionReview />
+              <TuitionReview tuition={tuition}/>
             </div>
           </div>}
         </div>

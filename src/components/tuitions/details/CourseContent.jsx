@@ -2,7 +2,6 @@ import React from "react";
 import { MdEdit } from "react-icons/md";
 
 const CourseContent = ({tuition}) => {
-  console.log(tuition)
   return (
     <div>
       <div className="bg-white p-6 rounded-lg shadow-sm">

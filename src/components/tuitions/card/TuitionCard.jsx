@@ -1,9 +1,5 @@
 import { Link } from "react-router";
-import {
-  FaMoneyBillWave,
-  FaArrowRight,
-} from "react-icons/fa";
-import { GiBookshelf } from "react-icons/gi";
+
 
 const TuitionCard = ({ tuition }) => {
   const tuition_url = `https://res.cloudinary.com/dinzf10l3/${tuition.image}`;
