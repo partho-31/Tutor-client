@@ -6,11 +6,12 @@ import TuitionHeading from "./details/TuitionHeading";
 import CourseContentPhoto from "./details/CourseContentPhoto";
 import TuitionInfo from "./details/TuitionInfo";
 import PaymentSection from "./details/PaymentSection";
-import DetailsAboutCourse from "./details/DetailsAboutCourse";
+import DetailsAboutCourse from "./details/OutComes";
 import TuitionReview from "./reviews/TuitionReview";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
+import StudentsOfCourse from "./details/StudentsOfCourse";
 
 const TuitionDetails = () => {
   
@@ -40,7 +41,7 @@ const TuitionDetails = () => {
       <div className="bg-gray-50 font-sans">
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           {loading? 
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center h-lvh">
               <span className="loading loading-spinner text-info text-6xl"></span>
             </div>
           :
@@ -56,6 +57,8 @@ const TuitionDetails = () => {
 
               {/* Instructor Info */}
               <TeacherInfo tuition={tuition}/>
+              {/* Student list */}
+              <StudentsOfCourse tuition={tuition} />
             </div>
 
             {/* Right Side - Main Focus Area */}

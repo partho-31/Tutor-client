@@ -34,7 +34,7 @@ const PaymentSection = ({tuition}) => {
           <div>
             <p className="text-gray-600">Course Price</p>
             <div className="flex items-baseline space-x-2">
-              <p className="text-3xl font-bold text-blue-800">{fee}</p>
+              <p className="text-3xl font-bold text-blue-800">{isNaN(fee)? "0" : fee}</p>
               <p className="text-sm text-gray-500 line-through">{tuition.fee}</p>
               <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
                 20.00% OFF

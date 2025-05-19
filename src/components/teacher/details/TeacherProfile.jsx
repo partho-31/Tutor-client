@@ -35,7 +35,7 @@ const TeacherProfile = () => {
   return (
     <div className="mt-5">
       {loading ? (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center h-lvh">
           <span className="loading loading-spinner text-info text-6xl"></span>
         </div>
       ) : (

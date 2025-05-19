@@ -2,6 +2,8 @@ import React from "react";
 import { MdEdit } from "react-icons/md";
 
 const CourseContent = ({tuition}) => {
+  const lines =tuition.course_content? tuition.course_content.split(',') : []
+  
   return (
     <div>
       <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -9,9 +11,13 @@ const CourseContent = ({tuition}) => {
           Course Content
         </h3>
         <div className="space-y-3">
-          <div className="flex items-center space-x-3">
-            <MdEdit />
-            <span>{tuition.course_content}</span>
+          <div className=" space-x-3">
+            {lines.map((line,index)=>(
+              <div key={index} className="flex items-center gap-2 mb-2">
+                 <MdEdit /> {line}
+              </div>
+            ))}
+           
           </div>
         </div>
       </div>

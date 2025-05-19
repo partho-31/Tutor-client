@@ -8,7 +8,7 @@ const TeacherCards = () => {
     return (
       <div className="container mx-auto px-6 "> 
       {loading && (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center h-lvh">
           <span className="loading loading-spinner text-info"></span>
         </div>
       )}

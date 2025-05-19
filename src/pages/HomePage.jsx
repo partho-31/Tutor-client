@@ -9,9 +9,9 @@ import useFetchTeachers from "../hooks/useFetchTeachers";
 import StateContainer from "../components/home/heroSection/StateContainer";
 
 const Temppo = () => {
-  const { tuitions } = useFetchTuitions();
+  const { tuitions, loading } = useFetchTuitions();
   const { teachers } = useFetchTeachers();
-  
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -36,6 +36,11 @@ const Temppo = () => {
           >
             Featured Tuition Courses
           </h2>
+          {loading && (
+            <div className="w-full flex justify-center mt-5">
+              <span className="loading loading-spinner text-info"></span>
+            </div>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tuitions?.results.slice(0, 3).map((tuition, index) => (
               <div
@@ -56,9 +61,7 @@ const Temppo = () => {
                   <h3 className="text-xl font-semibold text-gray-800 mt-2">
                     {tuition.title}
                   </h3>
-                  <p className="mt-2 text-gray-600">
-                    {tuition.sub_title}
-                  </p>
+                  <p className="mt-2 text-gray-600">{tuition.sub_title}</p>
                   <div className="mt-4">
                     <button className="text-blue-600 hover:text-blue-800 font-medium">
                       Learn More →
@@ -91,8 +94,11 @@ const Temppo = () => {
               Meet Our Highest Rated Teachers
             </h1>
           </div>
+           {loading && (
+            <div className="w-full flex justify-center mt-5">
+              <span className="loading loading-spinner text-info"></span>
+            </div>)}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-           
             {teachers?.results.slice(0, 3).map((teacher, index) => (
               <div
                 className="bg-gray-50 rounded-lg p-6 text-center teacher-card transition duration-300"
@@ -117,19 +123,21 @@ const Temppo = () => {
                 <button className="bg-blue-600 text-white px-4 py-1 rounded-md text-sm hover:bg-blue-700 transition">
                   Book Session
                 </button>
-            </div>)
-            )}
+              </div>
+            ))}
           </div>
           <div className="text-center mt-12" data-aos="fade-up">
-            <Link to="/teachers"><button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-              Meet All Teachers
-            </button></Link>
+            <Link to="/teachers">
+              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                Meet All Teachers
+              </button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <StateContainer  />
+      <StateContainer />
 
       {/* Review Section */}
       <section className="py-16 bg-gray-50">
@@ -177,8 +185,6 @@ const Temppo = () => {
                 />
                 <div>
                   <h4 className="font-semibold">David L.</h4>
-                  
-                 
                 </div>
               </div>
               <p className="text-gray-600">
@@ -201,7 +207,6 @@ const Temppo = () => {
                 />
                 <div>
                   <h4 className="font-semibold">Sophia K.</h4>
-                
                 </div>
               </div>
               <p className="text-gray-600">
@@ -221,9 +226,11 @@ const Temppo = () => {
             Join thousands of students who are achieving their academic goals
             with our expert tutors.
           </p>
-          <Link to='/registration'><button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition duration-300">
-            Get Started Today
-          </button></Link>
+          <Link to="/registration">
+            <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition duration-300">
+              Get Started Today
+            </button>
+          </Link>
         </div>
       </section>
     </div>

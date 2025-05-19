@@ -13,23 +13,47 @@ const TuitionReview = ({ tuition }) => {
   } = useForm();
 
   const [reviews, setReviews] = useState([]);
-  
-  useEffect(() => {
-    const fetchReviews = async () => {
+  const [loading, setLoading] = useState(false);
+  const [loaderForDel, setLoaderForDel] = useState(false);
+
+  const fetchReviews = async () => {
+    setLoading(true);
+    try {
       const res = await apiClient.get(`/api/tuitions/${tuition.id}/reviews/`);
       setReviews(res.data);
-    };
+    } catch (error) {
+      console.log("Error while fetching reviews", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchReviews();
-  }, [tuition.id]);
+  }, []);
+
+  const handleReviewDelete = async (id) => {
+    setLoaderForDel(true);
+    try {
+      await authApiClient.delete(`api/tuitions/${tuition.id}/reviews/${id}/`);
+    } catch (error) {
+      console.log("Error while deleting reviews", error);
+    } finally {
+      setLoaderForDel(false);
+      fetchReviews();
+    }
+  };
 
   const onSubmit = async (fromData) => {
     try {
       await authApiClient.post(`api/tuitions/${tuition.id}/reviews/`, fromData);
       reset();
+      fetchReviews();
     } catch (error) {
       console.log("Error in submitting review", error);
     }
   };
+
   return (
     <div>
       <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -65,10 +89,17 @@ const TuitionReview = ({ tuition }) => {
             </p>
           </div>
           {/* Dynamic Review  */}
+          {loading ? (
+            <div className="w-full flex justify-center">
+              <span className="loading loading-spinner text-info text-6xl"></span>
+            </div>
+          ) : (
+            ""
+          )}
 
           {reviews.map((review, index) => (
             <div
-              className="review-card bg-gray-50 p-5 rounded-lg border border-gray-100"
+              className="review-card bg-gray-50 p-5 rounded-lg border border-gray-100 relative"
               key={index}
             >
               <div className="flex items-center space-x-3 mb-3">
@@ -77,7 +108,7 @@ const TuitionReview = ({ tuition }) => {
                   alt="Student"
                   className="w-10 h-10 rounded-full"
                 />
-                <div>
+                <div className="flex-1">
                   <p className="font-medium">
                     {review.user.first_name} {review.user.last_name}
                   </p>
@@ -91,6 +122,18 @@ const TuitionReview = ({ tuition }) => {
                     )}
                   </div>
                 </div>
+                {/* Delete Button */}
+
+                {loaderForDel ? (
+                  <span className="loading loading-spinner text-error"></span>
+                ) : (
+                  <button
+                    className="btn btn-soft btn-error"
+                    onClick={() => handleReviewDelete(review.id)}
+                  >
+                    Delete
+                  </button>
+                )}
               </div>
               <p className="text-gray-700">{review.comment}</p>
             </div>
