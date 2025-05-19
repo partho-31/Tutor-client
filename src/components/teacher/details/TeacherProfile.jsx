@@ -30,8 +30,7 @@ const TeacherProfile = () => {
     };
     fetchTeacher();
   }, [Id]);
-  console.log(teacher);
-  console.log(Id);
+ 
   return (
     <div className="mt-5">
       {loading ? (

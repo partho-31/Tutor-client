@@ -1,7 +1,6 @@
-
 import TuitionCard from "./card/TuitionCard.jsx";
 
-const TuitionList = ({tuitions,loading}) => {
+const TuitionList = ({ tuitions, loading }) => {
   return (
     <div className="container mx-auto px-6 ">
       {loading && (

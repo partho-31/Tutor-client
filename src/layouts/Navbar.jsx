@@ -3,6 +3,7 @@ import useAuthContext from "../hooks/useAuthContext";
 
 const Navbar = () => {
   const { user, logOut } = useAuthContext();
+
   return (
     <div className="bg-indigo-950">
       <div className="navbar p-5">

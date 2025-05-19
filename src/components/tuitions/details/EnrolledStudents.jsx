@@ -1,4 +1,3 @@
-import React from "react";
 import { RiGroupLine } from "react-icons/ri";
 
 const EnrolledStudents = () => {

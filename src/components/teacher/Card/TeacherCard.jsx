@@ -1,9 +1,7 @@
-import React from "react";
 import { Link } from "react-router";
-import { FaStar, FaChalkboardTeacher, FaMapMarkerAlt } from "react-icons/fa";
+import { FaChalkboardTeacher, FaMapMarkerAlt } from "react-icons/fa";
 
 const Card = ({ teacher }) => {
-  
   return (
     <Link to={`/teachers/${teacher.id}/`} className="group">
       <div
@@ -12,7 +10,7 @@ const Card = ({ teacher }) => {
         data-aos-delay="100"
       >
         {/* Teacher Image with Glow Effect */}
-         <div className="relative overflow-hidden rounded-md w-36 h-36 mx-auto mb-5">
+        <div className="relative overflow-hidden rounded-md w-36 h-36 mx-auto mb-5">
           <div className="absolute inset-0 bg-gradient-to-tr from-pink-200 to-purple-200 opacity-0 group-hover:opacity-30 rounded-md transition-opacity duration-500 z-10"></div>
           <img
             src={teacher.profile.image}
@@ -26,16 +24,16 @@ const Card = ({ teacher }) => {
           <h3 className="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors">
             {teacher.first_name} {teacher.last_name}
           </h3>
-          
+
           <div className="flex items-center justify-center gap-2">
             <FaChalkboardTeacher className="text-purple-500" />
             <p className="text-lg font-medium text-purple-600">
               {teacher.profession}
             </p>
           </div>
-            <p className="text-lg font-medium text-purple-600">
-              {teacher.institute}
-            </p>
+          <p className="text-lg font-medium text-purple-600">
+            {teacher.institute}
+          </p>
 
           <div className="flex items-center justify-center gap-2 text-gray-600">
             <FaMapMarkerAlt className="text-gray-400" />
@@ -43,7 +41,6 @@ const Card = ({ teacher }) => {
           </div>
         </div>
 
-       
         <div className="mt-6 space-y-3">
           <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg transition-all duration-300 hover:from-purple-700 hover:to-pink-700 group-hover:scale-105">
             Book Session

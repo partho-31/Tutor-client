@@ -4,7 +4,7 @@ import authApiClient from "../../../services/authApiClient";
 import { useEffect, useState } from "react";
 import apiClient from "../../../services/apiClient";
 
-const TuitionReview = ({ tuition }) => {
+const TuitionReview = ({ tuition, user }) => {
   const {
     register,
     handleSubmit,
@@ -15,11 +15,12 @@ const TuitionReview = ({ tuition }) => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loaderForDel, setLoaderForDel] = useState(false);
+  
 
   const fetchReviews = async () => {
     setLoading(true);
     try {
-      const res = await apiClient.get(`/api/tuitions/${tuition.id}/reviews/`);
+      const res = await apiClient.get(`/api/tuitions/${tuition?.id}/reviews/`);
       setReviews(res.data);
     } catch (error) {
       console.log("Error while fetching reviews", error);
@@ -122,17 +123,19 @@ const TuitionReview = ({ tuition }) => {
                     )}
                   </div>
                 </div>
-                {/* Delete Button */}
 
+                {/* Delete Button */}
                 {loaderForDel ? (
                   <span className="loading loading-spinner text-error"></span>
-                ) : (
+                ) : user ? (
                   <button
                     className="btn btn-soft btn-error"
                     onClick={() => handleReviewDelete(review.id)}
                   >
                     Delete
                   </button>
+                ) : (
+                  ""
                 )}
               </div>
               <p className="text-gray-700">{review.comment}</p>
@@ -172,7 +175,7 @@ const TuitionReview = ({ tuition }) => {
               </div>
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !user}
                 className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg"
               >
                 {isSubmitting ? "Submitting..." : "Submit Review"}

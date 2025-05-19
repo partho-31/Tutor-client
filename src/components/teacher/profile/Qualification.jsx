@@ -1,4 +1,3 @@
-import React from "react";
 import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
 
 const Qualification = ({ teacher }) => {
@@ -15,10 +14,10 @@ const Qualification = ({ teacher }) => {
               <li className="flex items-start">
                 <FaGraduationCap
                   className="text-indigo-500 mt-1 mr-3"
-                  size={16}
+                  size={18}
                 />
                 <div>
-                  <p className="font-medium">{teacher.experience}</p>
+                  <p className="font-medium">{teacher.qualifications}</p>
                 </div>
               </li>
             </ul>
@@ -29,12 +28,10 @@ const Qualification = ({ teacher }) => {
             </h3>
             <div className="mt-2 space-y-4">
               <div className="flex items-start">
-                <FaBriefcase className="text-indigo-500 mt-1 mr-3" size={16} />
+                <FaBriefcase className="text-indigo-500 mt-1 mr-3"  />
                 <div>
                   <p className="font-medium">
-                    Tempore iure doloribus quasi
-                    voluptatibus corporis vitae obcaecati quis aperiam hic!
-                  </p>
+                    {teacher.experience}</p>
                 </div>
               </div>
             </div>

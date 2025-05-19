@@ -9,7 +9,7 @@ const Filter = ({
   searchByClass,
   handleSearchByClass,
   searchByTeacher,
-  handleSearchByTeacher,
+  handleSearchByTeacher
 }) => {
   return (
     <div className="flex justify-center items-center py-5 px-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-md border border-blue-100">
@@ -22,8 +22,7 @@ const Filter = ({
               <span className="font-medium">Add Tuition</span>
             </button>
           </Link>
-        )}
-
+        )} 
         {/* Search Inputs Container */}
         <div className="flex flex-col md:flex-row md:space-x-3 space-y-3 md:space-y-0 w-full md:w-auto">
           {/* Subject Filter */}

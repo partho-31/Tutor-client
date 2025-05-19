@@ -1,4 +1,3 @@
-
 const ProfileHeader = ({ teacher }) => {
   return (
     <div>

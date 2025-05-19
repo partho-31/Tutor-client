@@ -1,7 +1,7 @@
 import { RiCheckboxCircleFill } from "react-icons/ri";
 
 const DetailsAboutCourse = ({ tuition }) => {
-  const lines = tuition.outcomes
+  const lines = tuition?.outcomes
     ? tuition.outcomes.split(".").filter((line) => line.trim() !== "")
     : [];
   return (
@@ -11,7 +11,7 @@ const DetailsAboutCourse = ({ tuition }) => {
           What You'll Learn
         </h3>
         <ul className="">
-          {lines.map((line, index) => (
+          {lines?.map((line, index) => (
             <li className="flex items-start space-x-2 mb-2" key={index}>
               <RiCheckboxCircleFill className="text-green-500 mt-1" />
               <span>{line}</span>

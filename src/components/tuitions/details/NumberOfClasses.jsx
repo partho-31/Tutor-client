@@ -1,7 +1,6 @@
-import React from "react";
 import { RiCalendarCheckLine } from "react-icons/ri";
 
-const NumberOfClasses = ({tuition}) => {
+const NumberOfClasses = ({ tuition }) => {
   return (
     <div>
       <div className="bg-white p-6 rounded-lg shadow-sm">

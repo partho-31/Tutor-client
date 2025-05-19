@@ -3,14 +3,13 @@ import authApiClient from "../../../services/authApiClient";
 
 const StudentsOfCourse = ({ tuition }) => {
   const [students, setStudents] = useState([]);
-  console.log(students);
+
   useEffect(() => {
     const fetchingOfStudents = async () => {
       try {
         const res = await authApiClient.get(
           `api/tuitions/${tuition.id}/applicants/`
         );
-
         setStudents(res.data);
       } catch (error) {
         console.log("Error while fetching students", error);

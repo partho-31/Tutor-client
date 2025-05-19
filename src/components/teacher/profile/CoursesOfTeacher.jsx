@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGraduationCap } from "react-icons/fa";
 
 const CoursesOfTeacher = ({ teacher }) => {
@@ -25,9 +24,6 @@ const CoursesOfTeacher = ({ teacher }) => {
                   <p className="text-base text-gray-700">
                     <span className="font-medium">Subject:</span>{" "}
                     {tuition.subjects}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Enrollment ID: {tuition.id}
                   </p>
                 </div>
               </div>
