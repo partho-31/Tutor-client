@@ -1,4 +1,4 @@
-import MenuBar from '../components/profile/sidebar/MenuBar';
+import MenuBar from '../components/dashboard/sidebar/MenuBar';
 import { Outlet } from 'react-router';
 
 const ProfileLayout = () => {

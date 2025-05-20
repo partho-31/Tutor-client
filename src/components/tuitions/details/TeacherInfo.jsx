@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const TeacherInfo = ({ tuition }) => {
   return (
     <div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
@@ -49,7 +51,7 @@ const TeacherInfo = ({ tuition }) => {
       </div>
 
       {/* Contact Button */}
-      <button className="mt-6 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
+     <Link to={`/teachers/${tuition.teacher?.id}`} ><button className="mt-6 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
         <svg
           className="w-5 h-5 mr-2"
           fill="none"
@@ -64,7 +66,7 @@ const TeacherInfo = ({ tuition }) => {
           />
         </svg>
         Contact Instructor
-      </button>
+      </button></Link> 
     </div>
   );
 };

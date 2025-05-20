@@ -91,12 +91,12 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
-                <Link to="profile"><li><button className="justify-between">Profile</button></li> </Link>
+                <Link to="dashboard"><li><button className="justify-between">Dashboard</button></li> </Link>
                 <li>
                   <a>Settings</a>
                 </li>
                 <li>
-                  <button onClick={logOut}>Logout</button>
+                  <button onClick={logOut}>Sign Out</button>
                 </li>
               </ul>
             </div>

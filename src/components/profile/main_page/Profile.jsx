@@ -1,9 +1,9 @@
 
-import ProfileCard from "../components/profile/main_content/ProfileCard";
-import PersonalInfo from "../components/profile/main_content/PersonalInfo";
-import Qualifications from "../components/profile/main_content/Qualifications";
-import Bio from "../components/profile/main_content/Bio";
-import useAuthContext from "../hooks/useAuthContext";
+import ProfileCard from "../profile_components/ProfileCard";
+import PersonalInfo from "../profile_components/PersonalInfo";
+import Qualifications from "../profile_components/Qualifications";
+import Bio from "../profile_components/Bio";
+import useAuthContext from "../../../hooks/useAuthContext";
 
 const StudentPortal = () => {
   const { user } = useAuthContext()

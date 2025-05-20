@@ -7,23 +7,23 @@ import Registration from "../pages/Registration";
 import Login from "../pages/Login";
 import Teachers from "../pages/Teachers";
 import TuitionDetails from "../components/tuitions/TuitionDetails";
-import Profile from "../pages/Profile";
 import TeacherProfile from "../components/teacher/details/TeacherProfile";
 import AboutUs from "../pages/AboutUs";
 import ActivateAcc from "../components/registration/ActivateAcc";
 import PaymentSuccess from "../components/payment/PaymentSuccess";
 import PaymentCancel from "../components/payment/PaymentCancel";
 import PaymentFailed from "../components/payment/PaymentFailed";
-import PasswordChange from "../components/profile/ChangePassword";
-import ProfileLayout from "../layouts/ProfileLayout";
+import DashboardLayout from "../layouts/DashboardLayout"
 import ForgetPassword from "../pages/ForgetPassword";
 import ResetPasswordConfirm from "../pages/ResetPasswordConfirm";
+import ChangePassword from "../components/dashboard/menu/ChangePassword"
 import PhotoUpload from "../components/profile/edit/PhotoUpload";
 import EditProfileInfo from "../components/profile/edit/EditProfileInfo";
 import AddTuitionForm from "../components/tuitions/form/TuitionForm";
 import PrivateRoute from "./PrivateRoute";
-import ProvidedTuition from "../components/profile/ProvidedTuition";
-import EnrolledTuition from "../components/profile/EnrolledTuition";
+import Dashboard from "../pages/dashboard";
+import Profile from "../components/profile/main_page/Profile"
+import PaymentHistory from "../components/dashboard/menu/PaymentHistory";
 
 const AppRoutes = () => {
   return (
@@ -47,21 +47,22 @@ const AppRoutes = () => {
           path="/password/reset/confirm/:uid/:token"
           element={<ResetPasswordConfirm />}
         />
+        
 
         <Route
-          path="profile"
+          path="dashboard"
           element={
             <PrivateRoute>
-              <ProfileLayout />
+              <DashboardLayout />
             </PrivateRoute>
           }
         >
-          <Route index element={<Profile />} />
-          <Route path="enrolledTuition" element={<EnrolledTuition />} />
-          <Route path="providedTuition" element={<ProvidedTuition />} />
-          <Route path="editProfile" element={<EditProfileInfo />} />
-          <Route path="upload-img" element={<PhotoUpload />} />
-          <Route path="changePassword" element={<PasswordChange />} />
+          <Route index element={<Dashboard />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="profile/editProfile" element={<EditProfileInfo />} />
+          <Route path="profile/upload-img" element={<PhotoUpload />} />
+          <Route path="paymetHistory" element={<PaymentHistory />} />
+          <Route path="changePassword" element={<ChangePassword />} />
         </Route>
       </Route>
     </Routes>

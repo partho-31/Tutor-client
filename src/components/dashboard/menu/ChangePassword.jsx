@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import authApiClient from "../../services/authApiClient";
+import authApiClient from "../../../services/authApiClient";
 
 const PasswordChange = () => {
   const {

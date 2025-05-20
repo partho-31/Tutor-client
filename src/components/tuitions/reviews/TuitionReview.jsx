@@ -178,7 +178,7 @@ const TuitionReview = ({ tuition, user }) => {
                 disabled={isSubmitting || !user}
                 className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg"
               >
-                {isSubmitting ? "Submitting..." : "Submit Review"}
+                {isSubmitting ? "Sub/mitting..." : "Submit Review"}
               </button>
             </form>
           </div>

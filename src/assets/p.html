@@ -1,31 +1,307 @@
-import { useEffect, useState } from "react";
-import useAuthContext from "../hooks/useAuthContext";
-import { useForm } from "react-hook-form";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#6366F1',
+                        dark: '#1F2937',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        completed: '#6B7280'
+                    },
+                    backgroundImage: {
+                        'sidebar-gradient': 'linear-gradient(to bottom, #4F46E5, #6366F1)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        .sidebar.collapsed {
+            width: 80px;
+        }
+        .sidebar.collapsed .menu-text {
+            display: none;
+        }
+        .sidebar.collapsed .logo-text {
+            display: none;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                z-index: 50;
+            }
+            .sidebar.open {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuButton" class="md:hidden fixed top-4 left-4 z-40 bg-white p-2 rounded-lg shadow-lg">
+            <i class="fas fa-bars text-primary text-xl"></i>
+        </button>
 
-const EditProfile = () => {
- 
-  
+        <!-- Sidebar -->
+        <div class="sidebar bg-gradient-to-b from-primary to-secondary text-white w-64 flex flex-col z-30">
+            <div class="p-5 flex items-center space-x-3">
+                <div class="bg-white text-primary p-2 rounded-lg">
+                    <i class="fas fa-user-graduate text-xl"></i>
+                </div>
+                <span class="logo-text text-xl font-bold">Student Portal</span>
+            </div>
+            <div class="flex-1 overflow-y-auto p-4 space-y-1">
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg bg-white bg-opacity-20">
+                    <i class="fas fa-tachometer-alt text-lg"></i>
+                    <span class="menu-text font-medium">Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-user text-lg"></i>
+                    <span class="menu-text">Profile</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-key text-lg"></i>
+                    <span class="menu-text">Change Password</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-question-circle text-lg"></i>
+                    <span class="menu-text">Forgot Password</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-sign-out-alt text-lg"></i>
+                    <span class="menu-text">Sign Out</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white hover:bg-opacity-10 mt-8">
+                    <i class="fas fa-headset text-lg"></i>
+                    <span class="menu-text">Support/Help</span>
+                </a>
+            </div>
+        </div>
 
-  return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-xl font-bold text-dark">Student Dashboard</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i class="fas fa-bell text-xl text-gray-500 hover:text-primary cursor-pointer"></i>
+                        <span class="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary">
+                        <span class="font-medium">Sarah Johnson</span>
+                    </div>
+                </div>
+            </header>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-xl shadow-md p-6 space-y-6" encType="multipart/form-data">
-          
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-          </div>
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto p-6 bg-gray-50">
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- Enrolled Courses Card -->
+                    <div class="card-hover bg-white rounded-xl shadow-md p-6 border-l-4 border-primary">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500">Enrolled Courses</p>
+                                <h3 class="text-2xl font-bold mt-1">12</h3>
+                            </div>
+                            <div class="bg-blue-100 text-primary p-3 rounded-lg">
+                                <i class="fas fa-book text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">All your enrolled tuitions</p>
+                    </div>
+                    
+                    <!-- Running Courses Card -->
+                    <div class="card-hover bg-white rounded-xl shadow-md p-6 border-l-4 border-accent">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500">Running Courses</p>
+                                <h3 class="text-2xl font-bold mt-1">5</h3>
+                            </div>
+                            <div class="bg-green-100 text-accent p-3 rounded-lg">
+                                <i class="fas fa-play-circle text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Currently active</p>
+                    </div>
+                    
+                    <!-- Upcoming Courses Card -->
+                    <div class="card-hover bg-white rounded-xl shadow-md p-6 border-l-4 border-warning">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500">Upcoming Courses</p>
+                                <h3 class="text-2xl font-bold mt-1">3</h3>
+                            </div>
+                            <div class="bg-yellow-100 text-warning p-3 rounded-lg">
+                                <i class="fas fa-calendar-alt text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Starting soon</p>
+                    </div>
+                    
+                    <!-- Finished Courses Card -->
+                    <div class="card-hover bg-white rounded-xl shadow-md p-6 border-l-4 border-completed">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500">Finished Courses</p>
+                                <h3 class="text-2xl font-bold mt-1">4</h3>
+                            </div>
+                            <div class="bg-gray-100 text-completed p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Completed tuitions</p>
+                    </div>
+                </div>
 
-          <div className="pt-4">
-            <button type="submit" disabled={isSubmitting} className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed">
-              {isSubmitting ? "Saving..." : "Save Changes"}
-            </button>
-          </div>
-        </form>
-      </div>
+                <!-- Enrolled Tuitions Section -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold mb-6">Your Enrolled Tuitions</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Tuition Card 1 (Running) -->
+                        <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-lg font-bold">Advanced Mathematics</h3>
+                                        <p class="text-gray-500">Algebra & Calculus</p>
+                                    </div>
+                                    <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">Running</span>
+                                </div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Teacher" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <p class="font-medium">Prof. Rajesh Kumar</p>
+                                        <p class="text-sm text-gray-500">Mon, Wed, Fri • 4:00 PM</p>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Progress</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <button class="w-full bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-lg transition">
+                                    Join Class
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Tuition Card 2 (Upcoming) -->
+                        <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-lg font-bold">Physics Fundamentals</h3>
+                                        <p class="text-gray-500">Mechanics & Thermodynamics</p>
+                                    </div>
+                                    <span class="bg-warning text-white text-xs px-2 py-1 rounded-full">Upcoming</span>
+                                </div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Teacher" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <p class="font-medium">Dr. Priya Sharma</p>
+                                        <p class="text-sm text-gray-500">Starts Jun 15 • Tue, Thu</p>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Starts in</span>
+                                        <span>12 days</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-warning h-2 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <button class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-lg transition">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Tuition Card 3 (Completed) -->
+                        <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-lg font-bold">English Literature</h3>
+                                        <p class="text-gray-500">Classic & Modern Texts</p>
+                                    </div>
+                                    <span class="bg-completed text-white text-xs px-2 py-1 rounded-full">Completed</span>
+                                </div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Teacher" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <p class="font-medium">Mr. David Wilson</p>
+                                        <p class="text-sm text-gray-500">Completed Apr 2023</p>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Final Grade</span>
+                                        <span>A</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-completed h-2 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <button class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-lg transition">
+                                    View Certificate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-  );
-};
 
-export default EditProfile;
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('open');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('.sidebar');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(event.target) && 
+                !mobileMenuButton.contains(event.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -15,10 +15,8 @@ const EditProfileInfo = () => {
 
   useEffect(() => {
     if (user) {
-      // Set all form values from user data
       Object.keys(user).forEach((key) => setValue(key, user[key]));
 
-    
     }
   }, [user, setValue]);
 

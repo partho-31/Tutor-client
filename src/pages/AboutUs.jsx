@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { HiUserGroup, HiBookOpen, HiClipboardList, HiDesktopComputer } from 'react-icons/hi';
+import { Link } from "react-router";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -122,15 +123,15 @@ const AboutUs = () => {
         <div className="container mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
           {[
             {
-              number: "5000+",
+              number: "50+",
               label: "Verified Tutors",
             },
             {
-              number: "50,000+",
+              number: "500+",
               label: "Students Helped",
             },
             {
-              number: "98%",
+              number: "97.9%",
               label: "Satisfaction Rate",
             },
           ].map((stat, idx) => (
@@ -158,13 +159,13 @@ const AboutUs = () => {
             Whether you're a student looking to boost your grades or a parent
             searching for the best for your child, HomeTutor is here to help.
           </p>
-          <button
+          <Link to="/teachers"><button
             className="bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
             data-aos="zoom-in"
             data-aos-delay="200"
           >
             Find Your Tutor
-          </button>
+          </button></Link>
         </div>
       </section>
     </div>

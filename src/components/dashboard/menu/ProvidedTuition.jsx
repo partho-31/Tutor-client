@@ -1,11 +1,11 @@
 import { FaGraduationCap } from "react-icons/fa";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAuthContext from "../../../hooks/useAuthContext";
 
-const EnrolledTuition = () => {
-  const { user } = useAuthContext
+const ProvidedTuition = () => {
+  const { user } = useAuthContext()
   return (
     <div className="w-full flex-1 p-6 md:p-10 space-y-6">
-      {user?.applied_tuition?.map((tuition, index) => (
+      {user?.provided_tuition?.map((tuition, index) => (
         <div
           className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow"
           key={index}
@@ -32,4 +32,4 @@ const EnrolledTuition = () => {
   );
 };
 
-export default EnrolledTuition;
+export default ProvidedTuition;
