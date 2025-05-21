@@ -1,6 +1,5 @@
-import React from "react";
 
-const StateContainer = () => {
+const StateContainer = ({tuitions}) => {
   return (
     <div
       data-aos="fade-right"
@@ -9,20 +8,20 @@ const StateContainer = () => {
     >
       {/* Stats container */}
       <div className="bg-white rounded-lg shadow-md md:mx-20  flex flex-wrap">
-        {/* Stat item - Courses */}
+        {/*  Courses */}
         <div className="w-1/2 sm:w-1/2 md:w-1/4 p-2 sm:p-5 md:p-6 text-center border-b sm:border-b md:border-b-0 border-r border-gray-200">
           <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-600">
-            40
+            4
           </h2>
           <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 mt-1">
             Courses
           </p>
         </div>
 
-        {/* Stat item - Online Courses */}
+        {/* Online Courses */}
         <div className="w-1/2 sm:w-1/2 md:w-1/4 p-2 sm:p-5 md:p-6 text-center border-b sm:border-b md:border-b-0 md:border-r border-gray-200">
           <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-600">
-            90
+            {tuitions?.results.length}
           </h2>
           <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 mt-1">
             Online Courses
@@ -32,7 +31,7 @@ const StateContainer = () => {
         {/* Stat item - Students Placed */}
         <div className="w-1/2 sm:w-1/2 md:w-1/4 p-2 sm:p-5 md:p-6 text-center border-r md:border-r border-gray-200">
           <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-600">
-            200
+            0
           </h2>
           <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 mt-1">
             Students Placed
@@ -42,7 +41,7 @@ const StateContainer = () => {
         {/* Stat item - Students */}
         <div className="w-1/2 sm:w-1/2 md:w-1/4 p-2 sm:p-5 md:p-6 text-center">
           <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-600">
-            900+
+            9+
           </h2>
           <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 mt-1">
             Students

@@ -1,16 +1,14 @@
 import { FaGraduationCap } from "react-icons/fa";
-import useAuthContext from "../../../hooks/useAuthContext";
 import { Link } from "react-router";
 
-const EnrolledTuition = () => {
-  const { user } = useAuthContext();
+const EnrolledTuition = ({user}) => {
   return (
     <div className="w-full flex-1 p-6 md:p-10 space-y-6">
       {user?.applied_tuition?.map((tuition, index) => (
-        <Link to={`/tuitions/${tuition.details.id}/`}>
+        <Link to={`/tuitions/${tuition.details.id}/` }  key={index}>
           <div
-            className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow"
-            key={index}
+            className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow mb-4"
+           
           >
             <div className="flex items-start gap-4">
               <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">

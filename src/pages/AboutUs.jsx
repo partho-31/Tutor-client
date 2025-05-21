@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { HiUserGroup, HiBookOpen, HiClipboardList, HiDesktopComputer } from 'react-icons/hi';
+import {
+  HiUserGroup,
+  HiBookOpen,
+  HiClipboardList,
+  HiDesktopComputer,
+} from "react-icons/hi";
 import { Link } from "react-router";
 
 const AboutUs = () => {
@@ -35,8 +40,6 @@ const AboutUs = () => {
 
   return (
     <div className="font-poppins bg-gray-50">
-     
-
       {/* Mission Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -48,7 +51,7 @@ const AboutUs = () => {
               Our Mission
             </h2>
             <p className="text-lg text-gray-600">
-              At HomeTutor, we believe that every student deserves access to
+              At SkillSpark, we believe that every student deserves access to
               quality education, tailored learning, and expert guidance. Our
               mission is to bridge the gap between students and top-tier
               teachers through a reliable and easy-to-use platform.
@@ -61,12 +64,14 @@ const AboutUs = () => {
                 Who We Are
               </h3>
               <p className="text-gray-600 mb-6">
-                HomeTutor is a modern tuition marketplace connecting students
-                with experienced, highly qualified tutors across various
-                subjects and levels. Whether you're a school student needing
-                help in Math or a college aspirant preparing for competitive
-                exams, we bring the right teacher to your doorstep — online or
-                offline.
+                SkillSpark is a dynamic learning platform focused on delivering
+                high-quality academic courses for students of all levels.
+                Whether you're strengthening your foundation in core subjects
+                like Mathematics, Science, and English, or preparing for board
+                exams and university admissions, SkillSpark empowers you with
+                expert-led content, structured modules, and interactive
+                learning. Our goal is to ignite academic excellence by making
+                learning accessible, affordable, and engaging—anytime, anywhere.
               </p>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
                 Why Choose HomeTutor?
@@ -107,7 +112,9 @@ const AboutUs = () => {
                 data-aos="zoom-in"
                 data-aos-delay={idx * 100}
               >
-                <div className="text-3xl mb-4 flex items-center justify-center">{offer.icon}</div>
+                <div className="text-3xl mb-4 flex items-center justify-center">
+                  {offer.icon}
+                </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {offer.title}
                 </h3>
@@ -159,13 +166,15 @@ const AboutUs = () => {
             Whether you're a student looking to boost your grades or a parent
             searching for the best for your child, HomeTutor is here to help.
           </p>
-          <Link to="/teachers"><button
-            className="bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
-            data-aos="zoom-in"
-            data-aos-delay="200"
-          >
-            Find Your Tutor
-          </button></Link>
+          <Link to="/teachers">
+            <button
+              className="bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            >
+              Find Your Tutor
+            </button>
+          </Link>
         </div>
       </section>
     </div>

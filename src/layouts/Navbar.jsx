@@ -38,10 +38,10 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="tuitions">Tuitions</Link>
+                <Link to="tuitions">Courses</Link>
               </li>
               <li>
-                <Link to="teachers">Teachers</Link>
+                <Link to="teachers">Mentors</Link>
               </li>
               <li>
                 <Link to="about-us">About Us</Link>
@@ -51,7 +51,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <p className=" text-white text-lg lg:text-2xl font-bold">HomeTutor</p>
+          <p className=" text-white text-lg lg:text-2xl font-bold">SkillSpark</p>
         </div>
         <div className="navbar-center hidden lg:flex text-white font-bold ">
           <ul className="menu menu-horizontal px-1">
@@ -59,10 +59,10 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="tuitions">Tuitions</Link>
+              <Link to="tuitions">Courses</Link>
             </li>
             <li>
-              <Link to="teachers">Teachers</Link>
+              <Link to="teachers">Mentors</Link>
             </li>
             <li>
               <Link to="about-us">About Us</Link>

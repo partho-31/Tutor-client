@@ -11,7 +11,6 @@ import StateContainer from "../components/home/heroSection/StateContainer";
 const Temppo = () => {
   const { tuitions, loading } = useFetchTuitions();
   const { teachers } = useFetchTeachers();
-
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -34,7 +33,7 @@ const Temppo = () => {
             className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text tracking-tight text-transparent "
             data-aos="fade-up"
           >
-            Featured Tuition Courses
+            Featured Courses
           </h2>
           {loading && (
             <div className="w-full flex justify-center mt-5">
@@ -91,7 +90,7 @@ const Temppo = () => {
               data-aos-delay="100"
               className="m-2 md:m-5 text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-8x uppercase"
             >
-              Meet Our Highest Rated Teachers
+              Meet Our Highest Rated Mentors
             </h1>
           </div>
            {loading && (
@@ -137,7 +136,7 @@ const Temppo = () => {
       </section>
 
       {/* Stats Section */}
-      <StateContainer />
+      <StateContainer tuitions={tuitions}/>
 
       {/* Review Section */}
       <section className="py-16 bg-gray-50">
