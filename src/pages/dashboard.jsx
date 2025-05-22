@@ -1,4 +1,5 @@
 import EnrolledTuition from "../components/dashboard/menu/EnrolledTuition";
+import ProvidedTuition from "../components/dashboard/menu/ProvidedTuition";
 import useAuthContext from "../hooks/useAuthContext";
 
 const Dashboard = () => {
@@ -10,10 +11,10 @@ const Dashboard = () => {
           {/* Total Enrollments */}
           <div className="bg-white rounded-xl shadow-md p-4 w-full">
             <div className="flex flex-col items-center justify-center h-full">
-              <p className="bg-blue-50 text-gray-500 py-1 px-3 rounded-full font-medium text-lg mb-2">
+              <p className="bg-blue-50 text-gray-600 py-1 px-3 rounded-full font-medium text-lg mb-2">
                 Total Enrollments
               </p>
-              <h3 className="text-xl md:text-3xl font-bold text-gray-500">
+              <h3 className="text-xl md:text-3xl font-bold text-gray-600">
                 {user.applied_tuition.length}
               </h3>
             </div>
@@ -26,7 +27,7 @@ const Dashboard = () => {
                 Active Courses
               </p>
               <h3 className="text-xl md:text-3xl font-bold text-green-500">
-                3
+                {user.applied_tuition.length}
               </h3>
             </div>
           </div>
@@ -37,9 +38,7 @@ const Dashboard = () => {
               <p className="bg-blue-50 text-blue-700 py-1 px-3 rounded-full font-medium text-lg mb-2">
                 Upcoming Courses
               </p>
-              <h3 className="text-xl md:text-3xl font-bold text-blue-700">
-                0
-              </h3>
+              <h3 className="text-xl md:text-3xl font-bold text-blue-700">0</h3>
             </div>
           </div>
 
@@ -49,15 +48,23 @@ const Dashboard = () => {
               <p className="bg-blue-50 text-red-500 py-1 px-3 rounded-full font-medium text-lg mb-2">
                 Completed Courses
               </p>
-              <h3 className="text-xl md:text-3xl font-bold text-red-500">
-                0
-              </h3>
+              <h3 className="text-xl md:text-3xl font-bold text-red-500">0</h3>
             </div>
           </div>
         </div>
       </div>
       <div className="m-5">
-        <h2 className="text-3xl font-bold mb-5 bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text tracking-tight text-transparent ">
+        {user.role === "Teacher" && (
+          <div>
+            <h2 className="text-2xl bg-blue-50 text-gray-600 py-1 px-3 rounded-full font-medium mb-2 ">
+              Provided Courses
+            </h2>
+            <ProvidedTuition user={user} />
+          </div>
+        )}
+
+              
+        <h2 className="text-2xl bg-blue-50 text-gray-700 py-1 px-3 rounded-full font-medium mb-2 ">
           Enrolled Courses
         </h2>
         <EnrolledTuition user={user} />

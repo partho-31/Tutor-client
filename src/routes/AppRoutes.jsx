@@ -24,6 +24,8 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/dashboard";
 import Profile from "../components/profile/main_page/Profile"
 import PaymentHistory from "../components/dashboard/menu/PaymentHistory";
+import StudentList from "../components/dashboard/menu/StudentList";
+import TeachersList from "../components/dashboard/menu/TeachersList";
 
 const AppRoutes = () => {
   return (
@@ -63,6 +65,8 @@ const AppRoutes = () => {
           <Route path="profile/upload-img" element={<PhotoUpload />} />
           <Route path="paymetHistory" element={<PaymentHistory />} />
           <Route path="changePassword" element={<ChangePassword />} />
+          <Route path="studentsList" element={<StudentList />} />
+          <Route path="teachersList" element={<TeachersList />} />
         </Route>
       </Route>
     </Routes>

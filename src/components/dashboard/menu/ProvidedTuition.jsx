@@ -5,6 +5,7 @@ const ProvidedTuition = () => {
   const { user } = useAuthContext()
   return (
     <div className="w-full flex-1 p-6 md:p-10 space-y-6">
+    
       {user?.provided_tuition?.map((tuition, index) => (
         <div
           className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow"
