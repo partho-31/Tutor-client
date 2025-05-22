@@ -57,7 +57,7 @@ const MenuBar = () => {
         </Link>
 
         {/* Add Tuition */}
-        {(user?.role === "Teacher" || user?.is_staff) && (
+        {user?.is_staff && (
           <Link to="/tuition-form">
             <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-400">
               <GrAddCircle className="text-lg" />
@@ -66,8 +66,8 @@ const MenuBar = () => {
           </Link>
         )}
 
-
-        {(user?.role === "Teacher" || user?.is_staff) && (
+        {/* Teachers List  */}
+        {user?.is_staff && (
           <Link to="teachersList">
             <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-400">
               <LiaChalkboardTeacherSolid className="text-lg" />
@@ -76,7 +76,8 @@ const MenuBar = () => {
           </Link>
         )}
 
-        {(user?.role === "Teacher" || user?.is_staff) && (
+        {/* Student List  */}
+        {user?.is_staff && (
           <Link to="studentsList">
             <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-400">
               <PiStudent className="text-lg" />
