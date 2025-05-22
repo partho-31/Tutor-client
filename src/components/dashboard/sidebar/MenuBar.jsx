@@ -57,7 +57,7 @@ const MenuBar = () => {
         </Link>
 
         {/* Add Tuition */}
-        {user?.is_staff && (
+        {(user?.role === 'Teacher') && (
           <Link to="/tuition-form">
             <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-400">
               <GrAddCircle className="text-lg" />
