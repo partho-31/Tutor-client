@@ -54,14 +54,14 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="m-5">
-        {user.role === "Teacher" && (
+        {/* {user.role === "Teacher" && (
           <div>
             <h2 className="text-2xl bg-blue-50 text-gray-600 py-1 px-3 rounded-full font-medium mb-2 ">
               Provided Courses
             </h2>
             <ProvidedTuition user={user} />
           </div>
-        )}
+        )} */}
 
               
         <h2 className="text-2xl bg-blue-50 text-gray-700 py-1 px-3 rounded-full font-medium mb-2 ">

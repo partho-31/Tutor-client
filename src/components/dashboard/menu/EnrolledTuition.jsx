@@ -2,6 +2,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { Link } from "react-router";
 
 const EnrolledTuition = ({user}) => {
+  console.log(user)
   return (
     <div className="w-full flex-1 p-6 md:p-10 space-y-6">
       {user?.applied_tuition?.map((tuition, index) => (
