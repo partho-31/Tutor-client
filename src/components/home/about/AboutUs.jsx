@@ -8,17 +8,17 @@ const AboutUs = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              About HomeTutor
+              About EduPoint
             </h2>
             <p className="text-gray-600 mb-4">
-              HomeTutor is a modern tuition marketplace connecting students with
+              EduPoint is a modern tuition marketplace connecting students with
               experienced, highly qualified tutors across various subjects and
               levels. Whether you're a school student needing help in Math or a
               college aspirant preparing for competitive exams, we bring the
               right teacher to your doorstep — online or offline.
             </p>
             <p className="text-gray-600 mb-6">
-              At HomeTutor, we believe that every student deserves access to
+              At EduPoint, we believe that every student deserves access to
               quality education, tailored learning, and expert guidance. Our
               mission is to bridge the gap between students and top-tier
               teachers through a reliable and easy-to-use platform.

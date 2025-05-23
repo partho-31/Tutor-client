@@ -44,6 +44,9 @@ const Navbar = () => {
                 <Link to="teachers">Mentors</Link>
               </li>
               <li>
+              <Link to="blog">Blogs</Link>
+              </li>
+              <li>
                 <Link to="about-us">About Us</Link>
               </li>
               <li>
@@ -51,7 +54,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <p className=" text-white text-lg lg:text-2xl font-bold">SkillSpark</p>
+          <p className=" text-white text-lg lg:text-2xl font-bold">EduPoint</p>
         </div>
         <div className="navbar-center hidden lg:flex text-white font-bold ">
           <ul className="menu menu-horizontal px-1">
@@ -63,6 +66,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="teachers">Mentors</Link>
+            </li>
+            <li>
+              <Link to="blog">Blogs</Link>
             </li>
             <li>
               <Link to="about-us">About Us</Link>

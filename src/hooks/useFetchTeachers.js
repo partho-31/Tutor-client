@@ -10,10 +10,10 @@ const useFetchTeachers = () => {
     const fetchTeachers = async () => {
       setLoading(true);
       try {
-        const res = await apiClient.get("/api/teachers/");
+        const res = await apiClient.get("api/teachers/");
         setTeachers(res.data);
       } catch (error) {
-        console.log("Fetching tuitions error", error);
+        console.log("Fetching teacher error", error);
       } finally {
         setLoading(false);
       }

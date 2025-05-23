@@ -8,7 +8,7 @@ const EnrolledStudents = () => {
           <RiGroupLine className="text-2xl text-blue-600" />
           <div>
             <p className="text-gray-500 text-sm">Enrolled Students</p>
-            <p className="text-2xl font-bold">1,248</p>
+            <p className="text-2xl font-bold">5+</p>
           </div>
         </div>
       </div>

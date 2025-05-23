@@ -48,7 +48,7 @@ const TuitionDetails = () => {
               {/* Left Side - Information Area */}
               <div className="w-full lg:w-1/3 space-y-8 slide-in-left">
                 {/* Enrolled Students Count */}
-                <EnrolledStudents />
+                <EnrolledStudents tuition={tuition} />
                 {/* Course Content */}
                 <CourseContent tuition={tuition} />
                 {/* Number of Classes */}

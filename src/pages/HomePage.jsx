@@ -7,10 +7,14 @@ import useFetchTuitions from "../hooks/useFetchTuitions";
 import { Link } from "react-router";
 import useFetchTeachers from "../hooks/useFetchTeachers";
 import StateContainer from "../components/home/heroSection/StateContainer";
+import useFetchBlogs from "../hooks/useFetchBlogs";
+import BlogCard from "../components/blog/card/BlogCard";
 
 const Temppo = () => {
   const { tuitions, loading } = useFetchTuitions();
   const { teachers } = useFetchTeachers();
+  const {blogs} = useFetchBlogs()
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -30,7 +34,7 @@ const Temppo = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2
-            className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text tracking-tight text-transparent "
+            className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text tracking-tight text-transparent md:text-3xl lg:text-4xl"
             data-aos="fade-up"
           >
             Featured Courses
@@ -88,7 +92,7 @@ const Temppo = () => {
             <h1
               data-aos="fade-up"
               data-aos-delay="100"
-              className="m-2 md:m-5 text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-8x uppercase"
+              className="m-2 md:m-5 text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-3xl lg:text-4xl uppercase"
             >
               Meet Our Highest Rated Mentors
             </h1>
@@ -105,7 +109,7 @@ const Temppo = () => {
                 data-aos-delay="100"
                 key={index}
               >
-                <div className="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
+                <div className="overflow-hidden rounded-full w-32 h-32 mx-auto">
                   <img
                     src={teacher.profile.image}
                     alt="Dr. Sarah Johnson"
@@ -129,6 +133,39 @@ const Temppo = () => {
             <Link to="/teachers">
               <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                 Meet All Teachers
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section  */}
+       <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div>
+            <h1
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="m-2 md:m-5 text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-3xl lg:text-4xl uppercase"
+            >
+            Knowledge we provide
+            </h1>
+          </div>
+           {loading && (
+        <div className="w-full flex justify-center h-lvh">
+          <span className="loading loading-spinner text-info"></span>
+        </div>
+      )}
+
+      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogs?.map((post, index) => (
+          <BlogCard key={index} post={post} />
+        ))}
+      </div>
+          <div className="text-center mt-5" data-aos="fade-up">
+            <Link to="/blog">
+              <button className="bg-blue-400 text-white px-10 py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+                View all
               </button>
             </Link>
           </div>

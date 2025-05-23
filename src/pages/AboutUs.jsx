@@ -51,7 +51,7 @@ const AboutUs = () => {
               Our Mission
             </h2>
             <p className="text-lg text-gray-600">
-              At SkillSpark, we believe that every student deserves access to
+              At EduPoint, we believe that every student deserves access to
               quality education, tailored learning, and expert guidance. Our
               mission is to bridge the gap between students and top-tier
               teachers through a reliable and easy-to-use platform.
@@ -64,7 +64,7 @@ const AboutUs = () => {
                 Who We Are
               </h3>
               <p className="text-gray-600 mb-6">
-                SkillSpark is a dynamic learning platform focused on delivering
+                EduPoint is a dynamic learning platform focused on delivering
                 high-quality academic courses for students of all levels.
                 Whether you're strengthening your foundation in core subjects
                 like Mathematics, Science, and English, or preparing for board

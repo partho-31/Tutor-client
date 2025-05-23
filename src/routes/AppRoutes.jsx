@@ -26,6 +26,8 @@ import Profile from "../components/profile/main_page/Profile"
 import PaymentHistory from "../components/dashboard/menu/PaymentHistory";
 import StudentList from "../components/dashboard/menu/StudentList";
 import TeachersList from "../components/dashboard/menu/TeachersList";
+import BlogLayout from "../pages/Blog";
+import AddBlogForm from "../components/blog/addBlog/AddForm";
 
 const AppRoutes = () => {
   return (
@@ -49,6 +51,8 @@ const AppRoutes = () => {
           path="/password/reset/confirm/:uid/:token"
           element={<ResetPasswordConfirm />}
         />
+        <Route path="blog" element={<BlogLayout />} />
+        <Route path="blog/addBlog" element={<AddBlogForm />} />
         
 
         <Route
