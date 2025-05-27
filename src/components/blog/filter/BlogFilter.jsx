@@ -4,7 +4,7 @@ import { GrAddCircle } from "react-icons/gr";
 const BlogFilter = () => {
   return (
     <div
-      className="bg-white py-8 sticky top-0 z-10 shadow-xl mt-5"
+      className="bg-white py-8  shadow-xl mt-5"
       data-aos="fade-up"
     >
       <div className="max-w-6xl mx-auto px-4">

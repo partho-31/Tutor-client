@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-r from-pink-100 to-pink-200 text-white py-20">
+    <section className="relative min-h-screen bg-gradient-to-r from-pink-100 to-pink-200 text-white py-20">
       <div className="container mx-auto px-6 relative z-10">
         <div
           className="max-w-3xl mx-auto text-center py-5"

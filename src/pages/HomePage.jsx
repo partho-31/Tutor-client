@@ -148,7 +148,7 @@ const Temppo = () => {
               data-aos-delay="100"
               className="m-2 md:m-5 text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-3xl lg:text-4xl uppercase"
             >
-            Knowledge we provide
+            Reed our latest blogs
             </h1>
           </div>
            {loading && (

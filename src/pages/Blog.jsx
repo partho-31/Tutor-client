@@ -18,7 +18,7 @@ const BlogLayout = () => {
     <div>
       <BlogHeroSec />
       <BlogFilter />
-      <Link to="addBlog"><div className="text-center rounded-full mt-10 mx-5 p-3 text-white bg-blue-400">
+      <Link to="addBlog"><div className="text-center rounded-full mt-10 mx-5 p-3 text-white bg-indigo-900">
         <span className="font-medium">Add Blog</span>
       </div></Link>
 

@@ -5,7 +5,7 @@ const Navbar = () => {
   const { user, logOut } = useAuthContext();
 
   return (
-    <div className="bg-indigo-950">
+    <div className="bg-indigo-900">
       <div className="navbar p-5">
         <div className="navbar-start">
           <div className="dropdown ">
@@ -50,7 +50,7 @@ const Navbar = () => {
                 <Link to="about-us">About Us</Link>
               </li>
               <li>
-                <a>Contact Us</a>
+                <Link to="contact-us">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
               <Link to="about-us">About Us</Link>
             </li>
             <li>
-              <a>Contact Us</a>
+              <Link to="contact-us">Contact Us</Link>
             </li>
           </ul>
         </div>

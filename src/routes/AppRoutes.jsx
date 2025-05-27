@@ -28,6 +28,7 @@ import StudentList from "../components/dashboard/menu/StudentList";
 import TeachersList from "../components/dashboard/menu/TeachersList";
 import BlogLayout from "../pages/Blog";
 import AddBlogForm from "../components/blog/addBlog/AddForm";
+import ContactUs from "../pages/ContactUs";
 
 const AppRoutes = () => {
   return (
@@ -41,6 +42,7 @@ const AppRoutes = () => {
         <Route path="payment/cancel/" element={<PaymentCancel />} />
         <Route path="payment/failed/" element={<PaymentFailed />} />
         <Route path="about-us" element={<AboutUs />} />
+        <Route path="contact-us" element={ <ContactUs />} />
         <Route path="teachers" element={<Teachers />} />
         <Route path="teachers/:Id" element={<TeacherProfile />} />
         <Route path="registration" element={<Registration />} />
@@ -53,7 +55,7 @@ const AppRoutes = () => {
         />
         <Route path="blog" element={<BlogLayout />} />
         <Route path="blog/addBlog" element={<AddBlogForm />} />
-        
+         </Route>
 
         <Route
           path="dashboard"
@@ -72,7 +74,7 @@ const AppRoutes = () => {
           <Route path="studentsList" element={<StudentList />} />
           <Route path="teachersList" element={<TeachersList />} />
         </Route>
-      </Route>
+     
     </Routes>
   );
 };

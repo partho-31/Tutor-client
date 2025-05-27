@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const AboutUs = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white mt-5 ">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">

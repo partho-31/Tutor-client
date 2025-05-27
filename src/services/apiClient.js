@@ -8,15 +8,4 @@ const apiClient = axios.create({
 export default apiClient;
 
 
-// apiClient.interceptors.request.use(
-//   function (config) {
-//     const token = localStorage.getItem("authToken");
-//     if (token) {
-//       config.headers.Authorization = `JWT ${JSON.parse(token)?.access}`;
-//     }
-//     return config;
-//   },
-//   function (error) {
-//     return Promise.reject(error);
-//   }
-// );
+
