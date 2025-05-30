@@ -58,8 +58,8 @@ const MenuBar = () => {
         </Link>
 
         {/* Add Tuition */}
-        {user?.role === "Teacher" && (
-          <Link to="/tuition-form">
+        {(user?.role === "Teacher" || user?.is_staff ) && (
+          <Link to="/courses-form">
             <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-400">
               <GrAddCircle className="text-lg" />
               <span className="font-medium">Add Courses</span>
@@ -132,14 +132,15 @@ const MenuBar = () => {
         </Link>)}
 
         {/* Support or Help  */}
+        <Link to="/contact-us">
         <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-400">
           <FaHeadset className="text-lg" />
           <span>Support / Help</span>
-        </div>
+        </div></Link>
       </nav>
       
     </div>
-  );
+  );      
 };
 
 export default MenuBar;

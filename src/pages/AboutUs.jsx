@@ -8,11 +8,16 @@ import {
   HiDesktopComputer,
 } from "react-icons/hi";
 import { Link } from "react-router";
+import useFetchTeachers from "../hooks/useFetchTeachers";
+import useFetchStudents from "../hooks/useFetchStudents";
 
 const AboutUs = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+
+  const {teachers} = useFetchTeachers()
+  const {students} = useFetchStudents()
 
   const offerings = [
     {
@@ -130,11 +135,11 @@ const AboutUs = () => {
         <div className="container mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
           {[
             {
-              number: "50+",
+              number: teachers?.count,
               label: "Verified Tutors",
             },
             {
-              number: "500+",
+              number: students?.length,
               label: "Students Helped",
             },
             {

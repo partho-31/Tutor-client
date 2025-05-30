@@ -1,6 +1,8 @@
+import { Link } from "react-router";
 
 const BlogCard = ({ post }) => {
   return (
+    <Link to={`/blog/${post.id}/`}>
     <div
       className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
       data-aos="zoom-in-up"
@@ -24,7 +26,7 @@ const BlogCard = ({ post }) => {
         </h3>
         <p className="text-gray-600 mb-4">{post.description.slice(0,200)}</p>
       </div>
-    </div>
+    </div></Link>
   );
 };
 

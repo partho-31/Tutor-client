@@ -1,8 +1,11 @@
 import useFetchTeachers from "../../../hooks/useFetchTeachers";
+import DeleteBtnStudent from "../../button/DeleteBtnTeacher";
+import DeleteBtnTeacher from "../../button/DeleteBtnTeacher";
 
 const TeachersList = () => {
-  const { teachers, loading } = useFetchTeachers();
-  console.log(teachers);
+  const { teachers, loading, fetchTeachers } = useFetchTeachers();
+ 
+
   return (
     <div className="flex-1 mx-auto ">
       <div className="text-3xl pl-10 py-8 font-semibold mb-6 text-gray-800 border-b-2 border-indigo-200 ">
@@ -39,7 +42,7 @@ const TeachersList = () => {
                 </div>
               </div>
               <div className="w-1/3 flex justify-end">
-                <button className="btn btn-outline btn-error">Delete</button>
+                <DeleteBtnTeacher id={teacher.id} handleFetch={fetchTeachers} />
               </div>
             </div>
           ))}

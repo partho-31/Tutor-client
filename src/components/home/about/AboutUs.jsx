@@ -30,7 +30,7 @@ const AboutUs = () => {
             </Link>
           </div>
           <div
-            className="md:w-1/2 flex justify-center gap-5"
+            className="md:w-1/2 flex justify-center"
             data-aos="fade-left"
           >
             <img

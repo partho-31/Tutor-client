@@ -1,13 +1,12 @@
 import { RiStarFill, RiStarLine } from "react-icons/ri";
-import authApiClient from "../../../services/authApiClient";
 import { useEffect, useState } from "react";
 import apiClient from "../../../services/apiClient";
 import ReviewForm from "./ReviewForm";
+import DeleteBtnReview from "../../button/DeleteBtnReview";
 
 const TuitionReview = ({ tuition, user }) => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [loaderForDel, setLoaderForDel] = useState(false);
 
   const fetchReviews = async () => {
     setLoading(true);
@@ -25,17 +24,7 @@ const TuitionReview = ({ tuition, user }) => {
     fetchReviews();
   }, []);
 
-  const handleReviewDelete = async (id) => {
-    setLoaderForDel(true);
-    try {
-      await authApiClient.delete(`api/tuitions/${tuition.id}/reviews/${id}/`);
-    } catch (error) {
-      console.log("Error while deleting reviews", error);
-    } finally {
-      setLoaderForDel(false);
-      fetchReviews();
-    }
-  };
+  
 
   return (
     <div>
@@ -82,18 +71,7 @@ const TuitionReview = ({ tuition, user }) => {
                 </div>
 
                 {/* Delete Button */}
-                {loaderForDel ? (
-                  <span className="loading loading-spinner text-error"></span>
-                ) : user ? (
-                  <button
-                    className="btn btn-soft btn-error"
-                    onClick={() => handleReviewDelete(review.id)}
-                  >
-                    Delete
-                  </button>
-                ) : (
-                  ""
-                )}
+                <DeleteBtnReview id={review.id} tuition_id={tuition.id} handleFetch={fetchReviews} />
               </div>
               <p className="text-gray-700">{review.comment}</p>
             </div>

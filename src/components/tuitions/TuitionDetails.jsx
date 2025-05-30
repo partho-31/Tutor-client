@@ -17,6 +17,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 const TuitionDetails = () => {
   let { Id } = useParams();
   const [tuition, setTuition] = useState("");
+  const [enrolledStudent,setEnrolledStudent] = useState([])
   const [loading, setLoading] = useState(false);
   const { user } = useAuthContext();
 
@@ -26,6 +27,10 @@ const TuitionDetails = () => {
       try {
         const res = await apiClient.get(`/api/tuitions/${Id}/`);
         setTuition(res?.data);
+        const res2 = await apiClient.get(
+          `api/tuitions/${Id}/applicants/`
+        )
+        setEnrolledStudent(res2.data)
       } catch (error) {
         console.log("Fetching tuition error", error);
       } finally {
@@ -47,21 +52,26 @@ const TuitionDetails = () => {
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Left Side - Information Area */}
               <div className="w-full lg:w-1/3 space-y-8 slide-in-left">
+              
                 {/* Enrolled Students Count */}
-                <EnrolledStudents tuition={tuition} />
+                <EnrolledStudents enrolledStudent={enrolledStudent} />
+
                 {/* Course Content */}
                 <CourseContent tuition={tuition} />
+
                 {/* Number of Classes */}
                 <NumberOfClasses tuition={tuition} />
 
                 {/* Instructor Info */}
                 <TeacherInfo tuition={tuition} />
+
                 {/* Student list */}
-                <StudentsOfCourse tuition={tuition} />
+                <StudentsOfCourse enrolledStudent={enrolledStudent} />
               </div>
 
               {/* Right Side - Main Focus Area */}
               <div className="w-full lg:w-2/3 space-y-8 fade-in">
+
                 {/* Heading */}
                 <TuitionHeading tuition={tuition} />
 

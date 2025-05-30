@@ -5,7 +5,7 @@ const TuitionCard = ({ tuition }) => {
   const tuition_url = `https://res.cloudinary.com/dinzf10l3/${tuition.image}`;
 
   return (
-    <Link to={`/tuitions/${tuition.id}/`}> 
+    <Link to={`/courses/${tuition.id}/`}> 
       <div className="max-w-sm mx-auto">
         <div
           className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-lg overflow-hidden transition-all duration-300 h-[26rem] hover:shadow-xl hover:-translate-y-1"

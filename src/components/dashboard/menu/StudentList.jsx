@@ -1,24 +1,8 @@
-import { useEffect, useState } from "react";
-import authApiClient from "../../../services/authApiClient";
+import useFetchStudents from "../../../hooks/useFetchStudents";
+import DeleteBtnStudent from "../../button/DeleteBtnStudent";
 
 const StudentList = () => {
-  const [students, setStudents] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchStudents = async () => {
-      setLoading(true);
-      try {
-        const res = await authApiClient("api/students/");
-        setStudents(res.data);
-      } catch (error) {
-        console.log("Error while fetching students", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchStudents();
-  }, []);
+  const { students, loading, fetchStudents } = useFetchStudents();
 
   return (
     <div className="flex-1 mx-auto ">
@@ -31,7 +15,7 @@ const StudentList = () => {
         </div>
       ) : (
         <div className="space-y-4 px-4 mx-5">
-          {students.map((student, index) => (
+          {students?.map((student, index) => (
             <div
               className="list-row flex items-center justify-between bg-white rounded-lg shadow-md p-4 border border-gray-200 mx-5"
               key={index}
@@ -53,7 +37,7 @@ const StudentList = () => {
                 </div>
               </div>
               <div className="w-1/3 flex justify-end">
-                <button className="btn btn-outline btn-error">Delete</button>
+                <DeleteBtnStudent id={student.id} handleFetch={fetchStudents} />
               </div>
             </div>
           ))}

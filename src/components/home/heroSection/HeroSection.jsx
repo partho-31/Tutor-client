@@ -2,12 +2,12 @@ import { Link } from "react-router";
 
 function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-r from-pink-100 to-pink-200 text-white py-20">
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="relative min-h-screen bg-gradient-to-r from-pink-100 to-pink-200 text-white py-20 flex justify-center items-center">
+      <div className="container mx-auto px-6 relative z-10" data-aos="fade-up"
+          data-aos-duration="1000">
         <div
           className="max-w-3xl mx-auto text-center py-5"
-          data-aos="fade-up"
-          data-aos-duration="1000"
+         
         >
           <p className="mb-3 text-sm font-medium font-serif uppercase tracking-wider text-gray-800 md:text-base">
             Discover quality education anytime, anywhere
@@ -21,13 +21,13 @@ function HeroSection() {
           </h1>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="/courses/book"
+              href="/courses"
               className="inline-flex min-w-40 items-center justify-center rounded-md bg-gray-900 px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-gray-800  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
             >
               Book Your Course Now
             </a>
             <Link
-              to="tuitions"
+              to="courses"
               className="inline-flex min-w-40 items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-900 shadow-sm transition-colors hover:bg-gray-50 focus-visible:outline-2  focus-visible:outline-offset-2 focus-visible:outline-gray-900"
             >
               All Courses

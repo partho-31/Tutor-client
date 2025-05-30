@@ -13,36 +13,37 @@ import ActivateAcc from "../components/registration/ActivateAcc";
 import PaymentSuccess from "../components/payment/PaymentSuccess";
 import PaymentCancel from "../components/payment/PaymentCancel";
 import PaymentFailed from "../components/payment/PaymentFailed";
-import DashboardLayout from "../layouts/DashboardLayout"
+import DashboardLayout from "../layouts/DashboardLayout";
 import ForgetPassword from "../pages/ForgetPassword";
 import ResetPasswordConfirm from "../pages/ResetPasswordConfirm";
-import ChangePassword from "../components/dashboard/menu/ChangePassword"
+import ChangePassword from "../components/dashboard/menu/ChangePassword";
 import PhotoUpload from "../components/profile/edit/PhotoUpload";
 import EditProfileInfo from "../components/profile/edit/EditProfileInfo";
 import AddTuitionForm from "../components/tuitions/form/TuitionForm";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/dashboard";
-import Profile from "../components/profile/main_page/Profile"
+import Profile from "../components/profile/main_page/Profile";
 import PaymentHistory from "../components/dashboard/menu/PaymentHistory";
 import StudentList from "../components/dashboard/menu/StudentList";
 import TeachersList from "../components/dashboard/menu/TeachersList";
 import BlogLayout from "../pages/Blog";
 import AddBlogForm from "../components/blog/addBlog/AddForm";
 import ContactUs from "../pages/ContactUs";
+import BlogPost from "../components/blog/main_page/BlogPost";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="tuitions" element={<Tuitions />} />
-        <Route path="tuitions/:Id/" element={<TuitionDetails />} />
-        <Route path="tuition-form" element={<AddTuitionForm />} />
+        <Route path="courses" element={<Tuitions />} />
+        <Route path="courses/:Id/" element={<TuitionDetails />} />
+        <Route path="courses-form" element={<AddTuitionForm />} />
         <Route path="payment/success/:id" element={<PaymentSuccess />} />
         <Route path="payment/cancel/" element={<PaymentCancel />} />
         <Route path="payment/failed/" element={<PaymentFailed />} />
         <Route path="about-us" element={<AboutUs />} />
-        <Route path="contact-us" element={ <ContactUs />} />
+        <Route path="contact-us" element={<ContactUs />} />
         <Route path="teachers" element={<Teachers />} />
         <Route path="teachers/:Id" element={<TeacherProfile />} />
         <Route path="registration" element={<Registration />} />
@@ -54,27 +55,27 @@ const AppRoutes = () => {
           element={<ResetPasswordConfirm />}
         />
         <Route path="blog" element={<BlogLayout />} />
+        <Route path="blog/:Id" element={<BlogPost />} />
         <Route path="blog/addBlog" element={<AddBlogForm />} />
-         </Route>
+      </Route>
 
-        <Route
-          path="dashboard"
-          element={
-            <PrivateRoute>
-              <DashboardLayout />
-            </PrivateRoute>
-          }
-        >
-          <Route index element={<Dashboard />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="profile/editProfile" element={<EditProfileInfo />} />
-          <Route path="profile/upload-img" element={<PhotoUpload />} />
-          <Route path="paymetHistory" element={<PaymentHistory />} />
-          <Route path="changePassword" element={<ChangePassword />} />
-          <Route path="studentsList" element={<StudentList />} />
-          <Route path="teachersList" element={<TeachersList />} />
-        </Route>
-     
+      <Route
+        path="dashboard"
+        element={
+          <PrivateRoute>
+            <DashboardLayout />
+          </PrivateRoute>
+        }
+      >
+        <Route index element={<Dashboard />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="profile/editProfile" element={<EditProfileInfo />} />
+        <Route path="profile/upload-img" element={<PhotoUpload />} />
+        <Route path="paymetHistory" element={<PaymentHistory />} />
+        <Route path="changePassword" element={<ChangePassword />} />
+        <Route path="studentsList" element={<StudentList />} />
+        <Route path="teachersList" element={<TeachersList />} />
+      </Route>
     </Routes>
   );
 };

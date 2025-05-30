@@ -1,5 +1,7 @@
+import useFetchStudents from "../../../hooks/useFetchStudents";
 
 const StateContainer = ({tuitions}) => {
+  const {students} = useFetchStudents()
   return (
     <div
       data-aos="fade-right"
@@ -41,7 +43,7 @@ const StateContainer = ({tuitions}) => {
         {/* Stat item - Students */}
         <div className="w-1/2 sm:w-1/2 md:w-1/4 p-2 sm:p-5 md:p-6 text-center">
           <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-600">
-            9+
+            {students.length}
           </h2>
           <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 mt-1">
             Students

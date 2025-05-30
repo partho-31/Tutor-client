@@ -1,23 +1,4 @@
-import { useEffect, useState } from "react";
-import authApiClient from "../../../services/authApiClient";
-
-const StudentsOfCourse = ({ tuition }) => {
-  const [students, setStudents] = useState([]);
-
-  useEffect(() => {
-    const fetchingOfStudents = async () => {
-      try {
-        const res = await authApiClient.get(
-          `api/tuitions/${tuition.id}/applicants/`
-        );
-        setStudents(res.data);
-      } catch (error) {
-        console.log("Error while fetching students", error);
-      }
-    };
-    fetchingOfStudents();
-  }, [tuition.id]);
-
+const StudentsOfCourse = ({ enrolledStudent }) => {
   return (
     <div className="bg-gray-100 p-5 font-sans text-gray-800 min-h-screen">
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-md">
@@ -28,7 +9,7 @@ const StudentsOfCourse = ({ tuition }) => {
         </div>
 
         <div className="space-y-4">
-          {students?.map((student, index) => (
+          {enrolledStudent?.map((student, index) => (
             <div
               key={index}
               className="flex items-center p-5 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 border-l-4 border-l-transparent hover:border-l-blue-500"

@@ -1,6 +1,6 @@
 import { RiGroupLine } from "react-icons/ri";
 
-const EnrolledStudents = () => {
+const EnrolledStudents = ({enrolledStudent}) => {
   return (
     <div>
       <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -8,7 +8,7 @@ const EnrolledStudents = () => {
           <RiGroupLine className="text-2xl text-blue-600" />
           <div>
             <p className="text-gray-500 text-sm">Enrolled Students</p>
-            <p className="text-2xl font-bold">5+</p>
+            <p className="text-2xl font-bold">{enrolledStudent?.length}</p>
           </div>
         </div>
       </div>
