@@ -6,43 +6,27 @@ import DeleteBtnReview from "../../button/DeleteBtnReview";
 
 const TuitionReview = ({ tuition, user }) => {
   const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const fetchReviews = async () => {
-    setLoading(true);
     try {
       const res = await apiClient.get(`/api/tuitions/${tuition?.id}/reviews/`);
       setReviews(res.data);
     } catch (error) {
       console.log("Error while fetching reviews", error);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {
     fetchReviews();
   }, []);
 
-  
-
   return (
-    <div>
       <div className="bg-white p-6 rounded-lg shadow-sm">
         <h3 className="text-xl font-semibold mb-6 text-gray-800">
           Student Reviews
         </h3>
 
-        <div className="space-y-6">
-          {/* Review */}
-          {loading ? (
-            <div className="w-full flex justify-center">
-              <span className="loading loading-spinner text-info text-6xl"></span>
-            </div>
-          ) : (
-            ""
-          )}
-          
+        <div className="space-y-6"> 
           {reviews.length === 0 && (<span className="text-gray-400 font-bold">No review available</span>)}
           {reviews.map((review, index) => (
             <div
@@ -71,14 +55,13 @@ const TuitionReview = ({ tuition, user }) => {
                 </div>
 
                 {/* Delete Button */}
-                <DeleteBtnReview id={review.id} tuition_id={tuition.id} handleFetch={fetchReviews} />
+                <DeleteBtnReview review={review} tuition_id={tuition.id} handleFetch={fetchReviews} user={user} />
               </div>
               <p className="text-gray-700">{review.comment}</p>
             </div>
           ))}
 
           {/* Review Form  */}
-
           <ReviewForm
             tuition={tuition}
             fetchReview={fetchReviews}
@@ -86,7 +69,6 @@ const TuitionReview = ({ tuition, user }) => {
           />
         </div>
       </div>
-    </div>
   );
 };
 

@@ -30,30 +30,32 @@ import BlogLayout from "../pages/Blog";
 import AddBlogForm from "../components/blog/addBlog/AddForm";
 import ContactUs from "../pages/ContactUs";
 import BlogPost from "../components/blog/main_page/BlogPost";
+import ContactMessages from "../components/contact/messages/ContactMessages";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="courses" element={<Tuitions />} />
-        <Route path="courses/:Id/" element={<TuitionDetails />} />
-        <Route path="courses-form" element={<AddTuitionForm />} />
-        <Route path="payment/success/:id" element={<PaymentSuccess />} />
-        <Route path="payment/cancel/" element={<PaymentCancel />} />
-        <Route path="payment/failed/" element={<PaymentFailed />} />
+        <Route path="registration" element={<Registration />} />
+        <Route path="login" element={<Login />} />
+        <Route path="activate/:uid/:token/" element={<ActivateAcc />} />
+        <Route path="forgetPassword" element={<ForgetPassword />} />
         <Route path="about-us" element={<AboutUs />} />
         <Route path="contact-us" element={<ContactUs />} />
-        <Route path="teachers" element={<Teachers />} />
-        <Route path="teachers/:Id" element={<TeacherProfile />} />
-        <Route path="registration" element={<Registration />} />
-        <Route path="activate/:uid/:token/" element={<ActivateAcc />} />
-        <Route path="login" element={<Login />} />
-        <Route path="forgetPassword" element={<ForgetPassword />} />
         <Route
           path="/password/reset/confirm/:uid/:token"
           element={<ResetPasswordConfirm />}
         />
+
+        <Route path="teachers" element={<Teachers />} />
+        <Route path="teachers/:Id" element={<TeacherProfile />} />
+        <Route path="courses" element={<Tuitions />} />
+        <Route path="courses-form" element={<AddTuitionForm />} />
+        <Route path="courses/:Id/" element={<TuitionDetails />} />
+        <Route path="payment/success/:id" element={<PaymentSuccess />} />
+        <Route path="payment/failed/" element={<PaymentFailed />} />
+        <Route path="payment/cancel/" element={<PaymentCancel />} />
         <Route path="blog" element={<BlogLayout />} />
         <Route path="blog/:Id" element={<BlogPost />} />
         <Route path="blog/addBlog" element={<AddBlogForm />} />
@@ -75,6 +77,7 @@ const AppRoutes = () => {
         <Route path="changePassword" element={<ChangePassword />} />
         <Route path="studentsList" element={<StudentList />} />
         <Route path="teachersList" element={<TeachersList />} />
+        <Route path="contact/messages" element={<ContactMessages/>} />
       </Route>
     </Routes>
   );

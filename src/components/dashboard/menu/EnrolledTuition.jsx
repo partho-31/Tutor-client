@@ -5,7 +5,7 @@ const EnrolledTuition = ({user}) => {
   return (
     <div className="w-full flex-1 p-6 md:p-10 space-y-6">
       {user?.applied_tuition?.map((tuition, index) => (
-        <Link to={`/tuitions/${tuition.details.id}/` }  key={index}>
+        <Link to={`/courses/${tuition.details.id}/` }  key={index}>
           <div
             className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow mb-4"
            

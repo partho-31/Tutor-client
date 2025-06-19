@@ -1,27 +1,11 @@
 import { useEffect } from "react";
 import AOS from "aos";
-import { useForm } from "react-hook-form";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import apiClient from "../services/apiClient";
+import ContactForm from "../components/contact/contactForm/ContactForm";
+import ContactInfo from "../components/contact/info/ContactInfo";
+
 
 const ContactUs = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm();
-
-  const onSubmit = async (data) => {
-    try {
-      await apiClient.post("api/contact/", data);
-      alert("Message sent successfully!")
-      reset();
-    } catch (error) {
-      console.error(error);
-      alert("Failed to send message.")
-    }
-  };
+  
 
   useEffect(() => {
       AOS.init({ duration: 1000 });
@@ -54,83 +38,11 @@ const ContactUs = () => {
             shortly.
           </p>
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="grid grid-cols-1 gap-2"
-          >
-            <input
-              type="text"
-              placeholder="Full name"
-              {...register("name", { required: true })}
-              className="w-full rounded-md border-gray-300 focus:outline-0 shadow-sm focus:border-indigo-900 focus:ring-indigo-900 px-3 p-1.5 border-2 bg-white/70"
-            />
-            {errors.name && (
-              <p className="text-red-600 text-sm">Name is required</p>
-            )}
-
-            <input
-              type="email"
-              placeholder="Email address"
-              {...register("email", { required: true })}
-              className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-900 focus:ring-indigo-900 px-3 p-1.5 border-2 focus:outline-0 bg-white/70"
-            />
-            {errors.email && (
-              <p className="text-red-600 text-sm">Email is required</p>
-            )}
-
-            <input
-              type="tel"
-              placeholder="Phone number"
-              {...register("phone")}
-              className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-900 focus:ring-indigo-900 px-3 p-1.5 border-2 focus:outline-0 bg-white/70"
-            />
-
-            <textarea
-              rows="2"
-              placeholder="Your message"
-              {...register("message", { required: true })}
-              className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-900 focus:ring-indigo-900 px-3 p-2 border-2 focus:outline-0 bg-white/70"
-            />
-            {errors.message && (
-              <p className="text-red-600 text-sm">Message is required</p>
-            )}
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full py-2 px-4 rounded-md bg-indigo-900 text-white hover:bg-indigo-800 transition"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+          <ContactForm />
         </div>
 
         {/* Contact Info Section */}
-        <div className="lg:w-[45%] bg-indigo-900 text-white p-6 flex flex-col justify-center space-y-4 text-sm">
-          <div className="flex items-start gap-3">
-            <FaMapMarkerAlt className="text-xl mt-1" />
-            <div>
-              <p className="font-semibold">SMR HALL, JUST</p>
-              <p>7406 Shorok, Jashore</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <FaPhoneAlt className="text-xl mt-1" />
-            <div>
-              <p className="font-semibold">(+880) 134-5678</p>
-              <p>Mon–Fri, 9am–5pm</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <FaEnvelope className="text-xl mt-1" />
-            <div>
-              <p className="font-semibold">edupoint@gmail.com</p>
-              <p>We usually respond within a day</p>
-            </div>
-          </div>
-        </div>
+       <ContactInfo />
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ const ReviewForm = ({tuition,fetchReview,user}) => {
     try {
       await authApiClient.post(`api/tuitions/${tuition.id}/reviews/`, fromData);
       reset();
+      alert('Review submitted!')
       await fetchReview();
     } catch (error) {
       console.log("Error in submitting review", error);

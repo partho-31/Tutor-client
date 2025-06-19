@@ -124,7 +124,7 @@ const MenuBar = () => {
 
         {/* Contact Inbox  */}
         {user?.is_staff && (
-        <Link to="">
+        <Link to="contact/messages">
           <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-400">
             <BsEnvelopeArrowDown className="text-lg" />
             <span>Messages</span>
