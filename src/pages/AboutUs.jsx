@@ -8,15 +8,15 @@ import {
   HiDesktopComputer,
 } from "react-icons/hi";
 import { Link } from "react-router";
-import useFetchTeachers from "../hooks/useFetchTeachers";
 import useFetchStudents from "../hooks/useFetchStudents";
+import useTeacherContext from "../hooks/useTeacherContext";
 
 const AboutUs = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const {teachers} = useFetchTeachers()
+  const {teachers} = useTeacherContext()
   const {students} = useFetchStudents()
 
   const offerings = [
@@ -46,8 +46,8 @@ const AboutUs = () => {
   return (
     <div className="font-poppins bg-gray-50">
       {/* Mission Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-10  sm:py-16">
+        <div className="container mx-auto px-6">
           <div
             className="max-w-4xl mx-auto text-center mb-12"
             data-aos="fade-up"
@@ -55,7 +55,7 @@ const AboutUs = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
               Our Mission
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-start text-gray-600">
               At EduPoint, we believe that every student deserves access to
               quality education, tailored learning, and expert guidance. Our
               mission is to bridge the gap between students and top-tier
@@ -101,7 +101,7 @@ const AboutUs = () => {
       </section>
 
       {/* What We Offer */}
-      <section className="bg-gradient-to-br from-gray-50 to-purple-50 py-16">
+      <section className="bg-gradient-to-br from-gray-50 to-purple-50  sm:py-16">
         <div className="container mx-auto px-4 text-center">
           <h2
             className="text-3xl font-bold text-gray-800 mb-12"
@@ -109,7 +109,7 @@ const AboutUs = () => {
           >
             What We Offer
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
             {offerings.map((offer, idx) => (
               <div
                 key={idx}
@@ -158,13 +158,13 @@ const AboutUs = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-purple-600 to-indigo-500 text-white text-center">
+      <section className="py-16 bg-gradient-to-br from-blue-600 to-indigo-500 text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-6" data-aos="fade-up">
             Ready to start learning?
           </h2>
           <p
-            className="text-xl mb-8 max-w-2xl mx-auto opacity-90"
+            className="text-xl sm:mb-8 max-w-2xl mx-auto opacity-90"
             data-aos="fade-up"
             data-aos-delay="100"
           >
@@ -173,7 +173,7 @@ const AboutUs = () => {
           </p>
           <Link to="/teachers">
             <button
-              className="bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
+              className="bg-white text-purple-600 font-semibold px-8 mt-3 py-2 sm:py-3 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
               data-aos="zoom-in"
               data-aos-delay="200"
             >

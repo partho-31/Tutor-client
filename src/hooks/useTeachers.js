@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
 
-const useFetchTeachers = () => {
+const useTeachers = () => {
   const [teachers, setTeachers] = useState(null);
   const [loading, setLoading] = useState(false);
   
@@ -24,4 +24,4 @@ const useFetchTeachers = () => {
   return { teachers, loading, fetchTeachers };
 };
 
-export default useFetchTeachers;
+export default useTeachers;

@@ -1,9 +1,9 @@
-import useFetchTeachers from "../../../hooks/useFetchTeachers";
+import useTeacherContext from "../../../hooks/useTeacherContext";
 import DeleteBtnStudent from "../../button/DeleteBtnTeacher";
 import DeleteBtnTeacher from "../../button/DeleteBtnTeacher";
 
 const TeachersList = () => {
-  const { teachers, loading, fetchTeachers } = useFetchTeachers();
+  const { teachers, loading, fetchTeachers } = useTeacherContext();
  
 
   return (

@@ -1,65 +1,122 @@
-import { GrAddCircle } from "react-icons/gr";
-import { FiSearch } from "react-icons/fi";
-import { Link } from "react-router";
+import {
+  FiChevronDown,
+  FiFilter,
+  FiSearch,
+  FiX,
+} from "react-icons/fi";
 
 const Filter = ({
+  showMobileFilters,
+  handleMobileFilter,
   searchBySub,
   handleSearchBySub,
   searchByClass,
   handleSearchByClass,
-  searchByTeacher,
-  handleSearchByTeacher
+  ordering,
+  setOrdering
 }) => {
+
+  const orderingOptions = [
+    { option: "Newest First", value: "-created_at" },
+    { option: "Oldest First", value: "created_at" },
+  ];
+
+  const clearFiltering = () => {
+      handleSearchBySub(""),
+      handleSearchByClass(""),
+      setOrdering("")
+  };
+
   return (
-    <div className="flex justify-center items-center py-5 px-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-md border border-blue-100">
-      <div className="flex flex-col md:flex-row md:space-x-3 space-y-3 md:space-y-0 w-full max-w-6xl px-3 justify-center items-center">
-        
-        {/* Search Inputs Container */}
-        <div className="flex flex-col md:flex-row md:space-x-3 space-y-3 md:space-y-0 w-full md:w-auto">
-          {/* Subject Filter */}
-          <div className="relative">
-            <input
-              id="subject"
-              type="text"
-              value={searchBySub}
-              onChange={(e) => handleSearchBySub(e.target.value)}
-              placeholder="PHYSICS,MATHEMATICS"
-              className="w-full md:w-52 px-4 py-2 pl-10 border border-blue-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all duration-200 bg-white text-gray-700 placeholder-gray-400"
-            />
-            <FiSearch className="absolute left-3 top-2.5 text-gray-400" />
+    <div className="">
+      <div className="w-full sm:w-1/4  flex items-center justify-between">
+        <button
+          onClick={() => handleMobileFilter(!showMobileFilters)}
+          className="md:hidden flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+        >
+          <FiFilter /> Filters
+        </button>
+      </div>
+
+      <div
+        className={`${
+          showMobileFilters ? "block" : "hidden"
+        } md:block w-full md:w-64 lg:w-72 space-y-6`}
+      >
+        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-semibold text-lg text-gray-800 flex items-center gap-2">
+              <FiFilter className="text-gray-500" /> Filters
+            </h2>
+            <button
+              onClick={clearFiltering}
+              className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              Clear all
+            </button>
           </div>
 
-          {/* Class Filter */}
-          <div className="relative">
-            <input
-              id="class"
-              type="number"
-              value={searchByClass}
-              onChange={(e) => handleSearchByClass(e.target.value)}
-              placeholder="Class By Number"
-              className="w-full md:w-52 px-4 py-2 pl-10 border border-blue-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all duration-200 bg-white text-gray-700 placeholder-gray-400"
-            />
-            <FiSearch className="absolute left-3 top-2.5 text-gray-400" />
+          {/* Search by Course*/}
+          <div className="mb-8">
+            <div className="relative">
+              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search Subjects"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                value={searchBySub}
+                onChange={(e) => handleSearchBySub(e.target.value)}
+              />
+              {searchBySub && (
+                <button
+                  onClick={() => handleSearchBySub("")}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FiX />
+                </button>
+              )}
+            </div>
           </div>
 
-          {/* Teacher Filter */}
-          <div className="relative">
-            <input
-              id="teacher"
-              type="number"
-              value={searchByTeacher}
-              onChange={(e) => handleSearchByTeacher(e.target.value)}
-              placeholder="Teacher By ID"
-              className="w-full md:w-52 px-4 py-2 pl-10 border border-blue-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all duration-200 bg-white text-gray-700 placeholder-gray-400"
-            />
-            <FiSearch className="absolute left-3 top-2.5 text-gray-400" />
+          {/* Search by Class*/}
+          <div className="mb-8">
+            <div className="relative">
+              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search Class e.g 11"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                value={searchByClass}
+                onChange={(e) =>   handleSearchByClass(e.target.value)}
+              />
+              {searchByClass && (
+                <button
+                  onClick={() => handleSearchByClass("")}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <FiX />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Sorting */}
+          <div className="relative w-full sm:w-56 mb-8">
+            <select
+              className="w-full p-2 pl-3 pr-8 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white transition-all"
+              value={ordering}
+              onChange={(e) => setOrdering(e.target.value)}
+            >
+              <option>Select Order</option>
+              {orderingOptions.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.option}
+                </option>
+              ))}
+            </select>
+            <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
           </div>
         </div>
-
-        {/* Submit Button */}
-        <button className="w-full md:w-auto px-5 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg hover:from-emerald-600 hover:to-teal-700 focus:outline-none transition-all duration-200 shadow hover:shadow-md font-medium">
-          Search
-        </button>
       </div>
     </div>
   );

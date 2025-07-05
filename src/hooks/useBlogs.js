@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
 
-const useFetchBlogs = () => {
+const useBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
-//   const [searchByTopic, setSearchByTopic] = useState("");
-//   const [searchByHeading, setSearchByHeading] = useState("");
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -29,4 +27,4 @@ const useFetchBlogs = () => {
   };
 };
 
-export default useFetchBlogs;
+export default useBlogs;

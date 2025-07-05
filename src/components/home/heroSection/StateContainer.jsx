@@ -6,7 +6,7 @@ const StateContainer = ({tuitions}) => {
     <div
       data-aos="fade-right"
       data-aos-duration="2000"
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10"
+      className="max-w-7xl mx-auto px-4 mt-10 sm:px-6 lg:px-8 relative z-10"
     >
       {/* Stats container */}
       <div className="bg-white rounded-lg shadow-md md:mx-20  flex flex-wrap">

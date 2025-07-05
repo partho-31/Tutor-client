@@ -11,12 +11,12 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { login, errorMsg } = useAuthContext()
+  const { login, errorMsg } = useAuthContext();
 
   const onSubmit = async (data) => {
     setloading(true);
     try {
-       await login(data);
+      await login(data);
     } catch (error) {
       console.log("Login failed", error);
     } finally {
@@ -25,10 +25,34 @@ const Login = () => {
   };
   const navigate = useNavigate();
   const handleClick = () => navigate("/registration");
+
+  const handleAdminLogin = () => {
+    login({
+      email: "",
+      password: "Password@12",
+    });
+  };
+
+  const handleTeacherLogin = () => {
+    login({
+      email: "",
+      password: "Password@12",
+    });
+  };
+
+  const handleStudentLogin = () => {
+    login({
+      email: "",
+      password: "Password@12",
+    });
+  };
+
   return (
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 "
-      style={{ backgroundImage: `url('https://res.cloudinary.com/dinzf10l3/image/upload/v1747369185/black-notebook-with-pen_fmelpt.jpg')` }}
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/dinzf10l3/image/upload/v1747369185/black-notebook-with-pen_fmelpt.jpg')`,
+      }}
     >
       <div className="w-full max-w-md bg-white/0 backdrop-blur-xs rounded-xl shadow-lg p-8  border border-white/30">
         <div className="text-center mb-6">
@@ -96,9 +120,36 @@ const Login = () => {
             >
               {loading ? "Loading.." : "Sign In"}
             </button>
+              <h1 className="text-center font-bold text-white">With</h1>
+            <div className=" flex gap-3">
+              <button
+                onClick={handleAdminLogin}
+                className="w-full py-1 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
+              >
+                Admin Credential
+              </button>
+
+              <button
+                onClick={handleTeacherLogin}
+                className="w-full py-1 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
+              >
+                Teacher Credential
+              </button>
+
+              <button
+                onClick={handleStudentLogin}
+                className="w-full py-1 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
+              >
+                Student Credential
+              </button>
+            </div>
           </form>
+
           <div className="text-center mt-1">
-            <Link to="/forgetPassword" className="text-sm text-white/80 hover:underline">
+            <Link
+              to="/forgetPassword"
+              className="text-sm text-white/80 hover:underline"
+            >
               Forgot password?
             </Link>
             <hr className="m-3 text-gray-500" />

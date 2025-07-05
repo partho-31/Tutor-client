@@ -1,19 +1,20 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import HeroSection from "../components/home/heroSection/HeroSection";
 import AboutUs from "../components/home/about/AboutUs";
-import useFetchTuitions from "../hooks/useFetchTuitions";
 import { Link } from "react-router";
-import useFetchTeachers from "../hooks/useFetchTeachers";
 import StateContainer from "../components/home/heroSection/StateContainer";
-import useFetchBlogs from "../hooks/useFetchBlogs";
 import BlogCard from "../components/blog/card/BlogCard";
+import { FaChalkboardTeacher, FaMapMarkerAlt } from "react-icons/fa";
+import useTuitionContext from "../hooks/useTuitionContext";
+import useTeacherContext from "../hooks/useTeacherContext"
+import useBlogContext from "../hooks/useBlogsContext";
 
-const Temppo = () => {
-  const { tuitions, loading } = useFetchTuitions();
-  const { teachers } = useFetchTeachers();
-  const {blogs} = useFetchBlogs()
+const HomePage = () => {
+  const { tuitions, loading } = useTuitionContext();
+  const { teachers } = useTeacherContext()
+  const { blogs } = useBlogContext()
 
   useEffect(() => {
     AOS.init({
@@ -21,7 +22,7 @@ const Temppo = () => {
       once: false,
     });
   }, []);
-
+console.log(tuitions)
   return (
     <div className="font-sans ">
       {/* Hero Section */}
@@ -31,12 +32,13 @@ const Temppo = () => {
       <AboutUs />
 
       {/* Featured Courses Section */}
-      <section className="py-16 bg-gray-50">
+      <section
+        data-aos="fade-up"
+        data-aos-delay="100"
+        className="mt-10 sm:mt-15"
+      >
         <div className="container mx-auto px-6">
-          <h2
-            className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text tracking-tight text-transparent md:text-3xl lg:text-4xl"
-            data-aos="fade-up"
-          >
+          <h2 className="text-xl font-bold text-center mb-5 sm:mb-10  bg-pink-500  bg-clip-text tracking-tight text-transparent md:text-2xl lg:text-3xl">
             Featured Courses
           </h2>
           {loading && (
@@ -44,12 +46,10 @@ const Temppo = () => {
               <span className="loading loading-spinner text-info"></span>
             </div>
           )}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {tuitions?.results.slice(0, 3).map((tuition, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+            {tuitions?.results.slice(0, 4).map((tuition, index) => (
               <div
-                className="bg-white rounded-xl shadow-md overflow-hidden transition duration-300"
-                data-aos="fade-up"
-                data-aos-delay="100"
+                className="bg-white hover:border hover:border-blue-400 rounded-xl overflow-hidden "
                 key={index}
               >
                 <img
@@ -58,14 +58,18 @@ const Temppo = () => {
                   alt="Mathematics"
                 />
                 <div className="p-6">
-                  <div className="uppercase tracking-wide text-sm text-blue-600 font-semibold">
-                    {tuition.subjects}
+                  <div className="flex items-center text-xs sm:text-sm font-semibold text-blue-600 mb-2">
+                    <span className="">
+                      {tuition.subjects} - {tuition.classes}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mt-2">
+                  <h3 className="text-xl mt-1 font-semibold text-gray-800 overflow-hidden line-clamp-2">
                     {tuition.title}
                   </h3>
-                  <p className="mt-2 text-gray-600">{tuition.sub_title}</p>
-                  <div className="mt-4">
+                  <p className="mt-1 text-gray-600 overflow-hidden line-clamp-4">
+                    {tuition.sub_title}
+                  </p>
+                  <div className="mt-2">
                     <button className="text-blue-600 hover:text-blue-800 font-medium">
                       Learn More →
                     </button>
@@ -75,9 +79,9 @@ const Temppo = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12" data-aos="fade-up">
+          <div className="text-center mt-5 sm:mt-10">
             <Link to="/courses">
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              <button className="bg-blue-600 text-white px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                 View All Courses
               </button>
             </Link>
@@ -86,52 +90,69 @@ const Temppo = () => {
       </section>
 
       {/* Meet Our Teachers Section */}
-      <section className="py-16 bg-white">
+      <section className="py-10 sm:py-20 bg-white">
         <div className="container mx-auto px-6">
           <div>
-            <h1
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="m-2 md:m-5 text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-3xl lg:text-4xl uppercase"
-            >
+            <h1 className=" text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-xl font-bold tracking-tight text-transparent md:text-2xl lg:text-3xl uppercase">
               Meet Our Highest Rated Mentors
             </h1>
           </div>
-           {loading && (
+          {loading && (
             <div className="w-full flex justify-center mt-5">
               <span className="loading loading-spinner text-info"></span>
-            </div>)}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teachers?.results.slice(0, 3).map((teacher, index) => (
-              <div
-                className="bg-gray-50 rounded-lg p-6 text-center teacher-card transition duration-300"
-                data-aos="fade-up"
-                data-aos-delay="100"
-                key={index}
-              >
-                <div className="overflow-hidden rounded-full w-32 h-32 mx-auto">
-                  <img
-                    src={teacher.profile.image}
-                    alt="Dr. Sarah Johnson"
-                    className="w-full h-full object-cover teacher-img transition duration-500"
-                  />
+            </div>
+          )}
+          <div className="mt-5 sm:mt-10 grid grid-cols-1 sm:grid-cols-3  lg:grid-cols-4 gap-4">
+            {teachers?.results.slice(0, 4).map((teacher, index) => (
+              <Link to={`/teachers/${teacher.id}/`}>
+                <div
+                  className="bg-white rounded-xl hover:border hover:border-blue-400 shadow-md p-4 text-center transition duration-300 hover:shadow-lg"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  key={index}
+                >
+                  {/* Profile Image */}
+                  <div className="overflow-hidden rounded-full w-32 h-32 mx-auto ring-2 ring-blue-200 transition-transform duration-300 hover:scale-105">
+                    <img
+                      src={teacher.profile.image}
+                      alt={`${teacher.first_name} ${teacher.last_name}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Name */}
+                  <h3 className="text-lg font-semibold text-gray-800 mt-5">
+                    {teacher.first_name} {teacher.last_name}
+                  </h3>
+
+                  {/* Profession */}
+                  <div className="flex items-center justify-center gap-2 font-bold text-blue-600 text-md mb-1">
+                    <FaChalkboardTeacher className="text-blue-500" />
+                    <p>{teacher.profession}</p>
+                  </div>
+
+                  {/* Institute */}
+                  <p className="text-md text-gray-800 overflow-hidden line-clamp-1 mb-1">
+                    {teacher.institute}
+                  </p>
+
+                  {/* Address */}
+                  <div className="flex items-center overflow-hidden line-clamp-1  justify-center gap-1 text-gray-500 text-sm mb-4">
+                    <FaMapMarkerAlt />
+                    <p>{teacher.address}</p>
+                  </div>
+
+                  {/* CTA Button */}
+                  <button className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition duration-300">
+                    Book Session
+                  </button>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">
-                  {teacher.first_name} {teacher.last_name}
-                </h3>
-                <p className="text-blue-600 mb-2">{teacher.qualifications}</p>
-                <p className="text-gray-600 text-sm mb-4">
-                  {teacher.experience}
-                </p>
-                <button className="bg-blue-600 text-white px-4 py-1 rounded-md text-sm hover:bg-blue-700 transition">
-                  Book Session
-                </button>
-              </div>
+              </Link>
             ))}
           </div>
-          <div className="text-center mt-12" data-aos="fade-up">
+          <div className="text-center mt-10">
             <Link to="/teachers">
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              <button className="bg-blue-600 text-white px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                 Meet All Teachers
               </button>
             </Link>
@@ -140,31 +161,27 @@ const Temppo = () => {
       </section>
 
       {/* Blog Section  */}
-       <section className="py-16 bg-white">
+      <section className=" bg-white">
         <div className="container mx-auto px-6">
           <div>
-            <h1
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="m-2 md:m-5 text-center font-serif bg-gradient-to-r from-red-400 via-pink-600 to-purple-800 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-3xl lg:text-4xl uppercase"
-            >
-            Reed our latest blogs
+            <h1 className="text-center font-serif bg-pink-500 bg-clip-text text-xl font-bold tracking-tight text-transparent md:text-2xl lg:text-3xl uppercase">
+              Read our latest blogs
             </h1>
           </div>
-           {loading && (
-        <div className="w-full flex justify-center h-lvh">
-          <span className="loading loading-spinner text-info"></span>
-        </div>
-      )}
+          {loading && (
+            <div className="w-full flex justify-center h-lvh">
+              <span className="loading loading-spinner text-info"></span>
+            </div>
+          )}
 
-      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogs?.map((post, index) => (
-          <BlogCard key={index} post={post} />
-        ))}
-      </div>
-          <div className="text-center mt-5" data-aos="fade-up">
+          <div className=" mx-auto py-5 sm:py-10  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
+            {blogs?.map((post, index) => (
+              <BlogCard key={index} post={post} />
+            ))}
+          </div>
+          <div className="text-center ">
             <Link to="/blog">
-              <button className="bg-blue-400 text-white px-10 py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+              <button className="bg-blue-600 text-white px-10 py-2 sm:py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
                 View all
               </button>
             </Link>
@@ -173,24 +190,18 @@ const Temppo = () => {
       </section>
 
       {/* Stats Section */}
-      <StateContainer tuitions={tuitions}/>
+      <StateContainer tuitions={tuitions} />
+      
 
       {/* Review Section */}
-      <section className="py-16 bg-gray-50">
+      <section className=" bg-gray-50">
         <div className="container mx-auto px-6">
-          <h2
-            className="text-3xl font-bold text-center text-gray-800 mb-12"
-            data-aos="fade-up"
-          >
+          <h2 className="mt-10 sm:mt-10 text-2xl sm:text-3xl font-bold text-center text-gray-700 ">
             What Our Students Say
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Testimonial 1 */}
-            <div
-              className="bg-white p-6 rounded-lg shadow-md"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <img
                   src="https://randomuser.me/api/portraits/women/33.jpg"
@@ -208,11 +219,7 @@ const Temppo = () => {
             </div>
 
             {/* Testimonial 2 */}
-            <div
-              className="bg-white p-6 rounded-lg shadow-md"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <img
                   src="https://randomuser.me/api/portraits/men/45.jpg"
@@ -230,11 +237,7 @@ const Temppo = () => {
             </div>
 
             {/* Testimonial 3 */}
-            <div
-              className="bg-white p-6 rounded-lg shadow-md"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <img
                   src="https://randomuser.me/api/portraits/women/68.jpg"
@@ -255,15 +258,17 @@ const Temppo = () => {
       </section>
 
       {/* Call To Action Section */}
-      <section className="py-16 bg-blue-700 text-white">
-        <div className="container mx-auto px-6 text-center" data-aos="zoom-in">
-          <h2 className="text-3xl font-bold mb-6">Ready to Start Learning?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+      <section className="mt-10 p-6 bg-blue-600 text-white">
+        <div className="container  space-y-3 mx-auto px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold sm:mb-6">
+            Ready to Start Learning?
+          </h2>
+          <p className="sm:text-xl sm:mb-8 max-w-2xl mx-auto">
             Join thousands of students who are achieving their academic goals
             with our expert tutors.
           </p>
           <Link to="/registration">
-            <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition duration-300">
+            <button className="bg-white text-blue-700 px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition duration-300">
               Get Started Today
             </button>
           </Link>
@@ -273,4 +278,4 @@ const Temppo = () => {
   );
 };
 
-export default Temppo;
+export default HomePage;
