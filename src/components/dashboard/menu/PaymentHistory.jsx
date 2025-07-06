@@ -22,15 +22,15 @@ const PaymentHistory = () => {
 
   return (
     <div className="flex-1 mx-auto">
-      <h2 className="text-3xl pl-10 py-8 font-semibold mb-6 text-gray-800 border-b-2 border-indigo-200 ">
+      <div className="text-xl sm:text-3xl sm:pl-2 pb-4 font-bold mb-6 text-gray-600 border-b-2 border-indigo-200 ">
         Payment History
-      </h2>
+      </div>
       {loading ? (
         <div className="w-full flex justify-center">
           <span className="loading loading-spinner text-info"></span>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 sm:mx-3">
           {/* Desktop Table */}
           <div className="hidden md:block overflow-x-auto">
             <table className="min-w-full bg-white">

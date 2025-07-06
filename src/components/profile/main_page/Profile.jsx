@@ -9,7 +9,7 @@ const StudentPortal = () => {
   const { user } = useAuthContext()
   
   return (
-      <div className="w-full flex-1 p-6 md:p-10">
+      <div className="w-full flex-1 px-2 sm:p-3">
         <ProfileCard user={user}/>
        
         {/* Profile Details Section */}
@@ -20,7 +20,7 @@ const StudentPortal = () => {
           {/* Qualifiactions */}
           <Qualifications user={user}/>
         </div>
-        <div>
+        <div className="mt-5">
           {/* Bio */}
           <Bio user={user}/>
         </div>

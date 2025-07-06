@@ -39,22 +39,22 @@ const AddTuitionForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-200 py-5 sm:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        <div className="text-center mb-5 sm:mb-10">
+          <h2 className="text-xl font-extrabold text-gray-900 sm:text-4xl">
             Create New Tuition Course
           </h2>
-          <p className="mt-3 text-xl text-gray-600">
+          <p className="sm:mt-3 mt-1 text-lg sm:text-xl text-gray-600">
             Fill in the details to add a new tuition offering
           </p>
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-8 bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
+          className=" sm:space-y-8 bg-white p-5 sm:p-8 rounded-2xl shadow-xl border border-gray-100"
         >
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:gap-8 sm:grid-cols-2">
             {/* Title */}
             <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -63,7 +63,7 @@ const AddTuitionForm = () => {
               <input
                 type="text"
                 {...register("title", { required: true })}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 py-2 sm:py-3 rounded-lg border ${
                   errors.title
                     ? "border-red-300 focus:ring-red-500"
                     : "border-gray-300 focus:ring-indigo-500"
@@ -84,8 +84,8 @@ const AddTuitionForm = () => {
               </label>
               <textarea
                 {...register("description", { required: true })}
-                rows={4}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                rows={3}
+                className={`w-full px-4 py-2 sm:py-3 rounded-lg border ${
                   errors.description
                     ? "border-red-300 focus:ring-red-500"
                     : "border-gray-300 focus:ring-indigo-500"
@@ -107,7 +107,7 @@ const AddTuitionForm = () => {
               <input
                 type="text"
                 {...register("classes", { required: true })}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 sm:py-3 py-2 rounded-lg border ${
                   errors.classes
                     ? "border-red-300 focus:ring-red-500"
                     : "border-gray-300 focus:ring-indigo-500"
@@ -129,7 +129,7 @@ const AddTuitionForm = () => {
               <input
                 type="text"
                 {...register("subjects", { required: true })}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 sm:py-3 py-2 rounded-lg border ${
                   errors.subjects
                     ? "border-red-300 focus:ring-red-500"
                     : "border-gray-300 focus:ring-indigo-500"
@@ -151,7 +151,7 @@ const AddTuitionForm = () => {
               <input
                 type="text"
                 {...register("availability")}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 sm:py-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="e.g. Weekdays, Weekends"
               />
             </div>
@@ -162,7 +162,7 @@ const AddTuitionForm = () => {
                 Course Image <span className="text-red-500">*</span>
               </label>
               <div
-                className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-lg ${
+                className={`mt-1 flex justify-center px-6 py-2 sm:pt-5 sm:pb-6 border-2 border-dashed rounded-lg ${
                   errors.image ? "border-red-300" : "border-gray-300"
                 } hover:border-indigo-400 transition-colors`}
               >
@@ -172,12 +172,12 @@ const AddTuitionForm = () => {
                       <img
                         src={previewImage}
                         alt="Preview"
-                        className="h-32 w-full object-contain rounded-md mb-2"
+                        className="h-20 sm:h-32 w-full object-contain rounded-md mb-2"
                       />
                     </div>
                   ) : (
                     <svg
-                      className="mx-auto h-12 w-12 text-gray-400"
+                      className="mx-auto h-10 sm:h-12 sm:w-12 text-gray-400"
                       stroke="currentColor"
                       fill="none"
                       viewBox="0 0 48 48"
@@ -196,11 +196,11 @@ const AddTuitionForm = () => {
                       htmlFor="file-upload"
                       className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none"
                     >
-                      <h3 class="text-md font-medium text-blue-700 mb-2">
+                      <h3 class="text-md font-medium text-blue-700 sm:mb-2">
                         Click To Upload
                       </h3>
 
-                      <div class="px-3 py-1 bg-blue-100 rounded-full">
+                      <div class="px-3 mt-1 py-1 bg-blue-100 rounded-full">
                         <span class="text-xs font-medium text-blue-700">
                           Max file size: 4MB
                         </span>
@@ -241,7 +241,7 @@ const AddTuitionForm = () => {
               <input
                 type="text"
                 {...register("sub_title", { required: true })}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 py-2 sm:py-3 rounded-lg border ${
                   errors.sub_title
                     ? "border-red-300 focus:ring-red-500"
                     : "border-gray-300 focus:ring-indigo-500"
@@ -263,7 +263,7 @@ const AddTuitionForm = () => {
               <input
                 type="text"
                 {...register("duration")}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="e.g. 3 months, 36 hours"
               />
             </div>
@@ -275,7 +275,7 @@ const AddTuitionForm = () => {
               </label>
               <textarea
                 {...register("course_content", { required: true })}
-                rows={5}
+                rows={3}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.course_content
                     ? "border-red-300 focus:ring-red-500"
@@ -306,7 +306,7 @@ const AddTuitionForm = () => {
                     validate: (value) =>
                       Number.isInteger(value) || "Fee must be a whole number",
                   })}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 py-3 border-gray-300 rounded-lg"
+                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 py-2 sm:py-3 border-gray-300 rounded-lg"
                   placeholder="e.g. 5000"
                   step="1"
                   min="0"
@@ -329,7 +329,7 @@ const AddTuitionForm = () => {
               </label>
               <textarea
                 {...register("outcomes", { required: true })}
-                rows={4}
+                rows={3}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.outcomes
                     ? "border-red-300 focus:ring-red-500"
@@ -349,7 +349,7 @@ const AddTuitionForm = () => {
             <button
               disabled={isSubmitting}
               type="submit"
-              className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white ${
+              className={`w-full flex justify-center py-2 sm:py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white ${
                 isSubmitting
                   ? "bg-indigo-400"
                   : "bg-indigo-600 hover:bg-indigo-700"

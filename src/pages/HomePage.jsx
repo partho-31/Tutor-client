@@ -22,7 +22,7 @@ const HomePage = () => {
       once: false,
     });
   }, []);
-console.log(tuitions)
+  
   return (
     <div className="font-sans ">
       {/* Hero Section */}

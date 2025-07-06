@@ -24,14 +24,14 @@ const PasswordChange = () => {
   };
 
   return (
-    <div className="mx-auto md:mt-15 mt-3">
+    <div className="flex-1 my-10">
       <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 max-w-md p-8 bg-white rounded-xl shadow-lg"
+      className="space-y-2 sm:space-y-6 mx-auto  max-w-md p-4 sm:p-8 bg-white rounded-xl shadow-lg"
     >
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Change Password</h2>
-        <p className="text-gray-600 mt-1">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Change Password</h2>
+        <p className="hidden sm:inline text-gray-600 mt-1">
           Secure your account with a new password
         </p>
       </div>
@@ -51,7 +51,7 @@ const PasswordChange = () => {
             {...register("oldPassword", {
               required: "Current password is required",
             })}
-            className={`w-full px-4 py-3 rounded-lg border ${
+            className={`w-full px-4 py-2 sm:py-3 rounded-lg border ${
               errors.oldPassword ? "border-red-500" : "border-gray-300"
             } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm`}
             disabled={isSubmitting}
@@ -87,7 +87,7 @@ const PasswordChange = () => {
                 value !== getValues("oldPassword") ||
                 "New password must be different",
             })}
-            className={`w-full px-4 py-3 rounded-lg border ${
+            className={`w-full px-4 py-2 sm:py-3 rounded-lg border ${
               errors.newPassword ? "border-red-500" : "border-gray-300"
             } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm`}
             disabled={isSubmitting}
@@ -118,7 +118,7 @@ const PasswordChange = () => {
               validate: (value) =>
                 value === getValues("newPassword") || "Passwords don't match",
             })}
-            className={`w-full px-4 py-3 rounded-lg border ${
+            className={`w-full px-4 py-2 sm:py-3 rounded-lg border ${
               errors.confirmPassword ? "border-red-500" : "border-gray-300"
             } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm`}
             disabled={isSubmitting}
@@ -136,7 +136,7 @@ const PasswordChange = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed"
+        className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 sm:py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed"
       >
         {isSubmitting ? (
           <span className="flex items-center justify-center">
