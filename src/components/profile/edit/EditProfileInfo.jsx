@@ -1,6 +1,7 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import useAuthContext from "../../../hooks/useAuthContext";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const EditProfileInfo = () => {
   const { user, updateUserProfile } = useAuthContext();
@@ -16,21 +17,21 @@ const EditProfileInfo = () => {
   useEffect(() => {
     if (user) {
       Object.keys(user).forEach((key) => setValue(key, user[key]));
-
     }
   }, [user, setValue]);
 
- 
-
   const onSubmit = async (formData) => {
     try {
-       const res = await updateUserProfile(formData);
-      
+      const res = await updateUserProfile(formData);
       if (res.success) {
-        reset()
-      } 
+        reset();
+        toast.success("Profile updated!");
+      }
     } catch (error) {
-      console.error("Error updating profile:", error);
+      toast.error("Something went wrong!", {
+        position: "top-center",
+      });
+      return { Error: error };
     }
   };
 

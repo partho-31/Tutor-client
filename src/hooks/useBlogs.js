@@ -9,10 +9,11 @@ const useBlogs = () => {
     const fetchBlogs = async () => {
       setLoading(true);
       try {
-        const res = await apiClient.get('api/blogs/');
+        const res = await apiClient.get("api/blogs/");
         setBlogs(res.data);
+        return { success: true, massage: "fetching blogs successful" };
       } catch (error) {
-        console.log("Fetching tuitions error", error);
+        return { success: false, error: error };
       } finally {
         setLoading(false);
       }

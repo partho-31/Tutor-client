@@ -51,14 +51,12 @@ const AppRoutes = () => {
         <Route path="teachers" element={<Teachers />} />
         <Route path="teachers/:Id" element={<TeacherProfile />} />
         <Route path="courses" element={<Tuitions />} />
-        <Route path="courses-form" element={<AddTuitionForm />} />
         <Route path="courses/:Id/" element={<TuitionDetails />} />
         <Route path="payment/success/:id" element={<PaymentSuccess />} />
         <Route path="payment/failed/" element={<PaymentFailed />} />
         <Route path="payment/cancel/" element={<PaymentCancel />} />
         <Route path="blog" element={<BlogLayout />} />
         <Route path="blog/:Id" element={<BlogPost />} />
-        <Route path="blog/addBlog" element={<AddBlogForm />} />
       </Route>
 
       <Route
@@ -77,7 +75,9 @@ const AppRoutes = () => {
         <Route path="changePassword" element={<ChangePassword />} />
         <Route path="studentsList" element={<StudentList />} />
         <Route path="teachersList" element={<TeachersList />} />
-        <Route path="contact/messages" element={<ContactMessages/>} />
+        <Route path="contact/messages" element={<ContactMessages />} />
+        <Route path="courses-form" element={<AddTuitionForm />} />
+        <Route path="blog/addBlog" element={<AddBlogForm />} />
       </Route>
     </Routes>
   );

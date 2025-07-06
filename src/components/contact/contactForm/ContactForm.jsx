@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import authApiClient from "../../../services/authApiClient";
+import { toast } from "react-toastify";
 
 const ContactForm = () => {
   const {
@@ -12,11 +13,16 @@ const ContactForm = () => {
   const onSubmit = async (data) => {
     try {
       await authApiClient.post("api/contact/", data);
-      alert("Message sent successfully!");
       reset();
+      toast.success("Message delivered!",{
+        position: "top-center"
+      }
+      )
     } catch (error) {
-      console.error(error);
-      alert("Failed to send message.");
+      toast.error("Something went wrong! Please try again",{
+        position: "top-center"
+      })
+      return { error : error}
     }
   };
   return (

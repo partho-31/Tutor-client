@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import authApiClient from "../../../services/authApiClient";
+import { toast } from "react-toastify";
 
 const AddBlogForm = () => {
   const {
@@ -23,11 +24,16 @@ const AddBlogForm = () => {
     }
 
     try {
-      const res = await authApiClient.post("api/blogs/", formData);
-      console.log(res.data);
+      await authApiClient.post("api/blogs/", formData);
       reset();
+      toast.success("Message delivered!", {
+        position: "top-center",
+      });
     } catch (error) {
-      console.log("Error submitting blog", error);
+      toast.error("Something went wrong! Please try again", {
+        position: "top-center",
+      });
+      return { error: error };
     }
   };
 
@@ -81,7 +87,6 @@ const AddBlogForm = () => {
                     ? "border-red-300 focus:ring-red-500"
                     : "border-gray-300 focus:ring-indigo-500"
                 } focus:outline-none focus:ring-2`}
-                
               />
               {errors.description && (
                 <p className="mt-1 text-sm text-red-600">

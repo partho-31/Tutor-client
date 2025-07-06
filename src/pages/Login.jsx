@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import useAuthContext from "../hooks/useAuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [loading, setloading] = useState(false);
@@ -18,7 +19,10 @@ const Login = () => {
     try {
       await login(data);
     } catch (error) {
-      console.log("Login failed", error);
+      toast.error("Something went wrong",{
+        position : "top-center"
+      })
+      return { error : error}
     } finally {
       setloading(false);
     }
@@ -27,22 +31,25 @@ const Login = () => {
   const handleClick = () => navigate("/registration");
 
   const handleAdminLogin = () => {
+    setloading(true)
     login({
-      email: "",
+      email: "parthokumarmondal90@gmail.com",
       password: "Password@12",
     });
   };
 
   const handleTeacherLogin = () => {
+    setloading(true)
     login({
-      email: "",
+      email: "7vb20gd3w4@daouse.com",
       password: "Password@12",
     });
   };
 
   const handleStudentLogin = () => {
+    setloading(true)
     login({
-      email: "",
+      email: "4e9hw08m9r@cmhvzylmfc.com",
       password: "Password@12",
     });
   };

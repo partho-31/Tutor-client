@@ -10,8 +10,9 @@ const useFetchStudents = () => {
     try {
       const res = await apiClient.get("api/students/");
       setStudents(res.data);
+      return { success: false, message: "Fetching students successful" };
     } catch (error) {
-      console.log("Error while fetching students", error);
+      return { success: false, error: error };
     } finally {
       setloading(false);
     }

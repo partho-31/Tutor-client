@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import authApiClient from "../../../services/authApiClient";
+import { toast } from "react-toastify";
 
 const EditTuitionFrom = () => {
   const {
@@ -30,11 +31,16 @@ const EditTuitionFrom = () => {
     }
 
     try {
-      const res = await authApiClient.post("api/tuitions/", formData);
-      console.log(res.data);
+      await authApiClient.post("api/tuitions/", formData);
       reset();
+      toast.success("Tuition updated successfuly!", {
+        position: "top-center",
+      });
     } catch (error) {
-      console.error("Error submitting tuition:", error);
+      toast.error("Something went wrong! Please try again", {
+        position: "top-center",
+      });
+      return { error: error };
     }
   };
 

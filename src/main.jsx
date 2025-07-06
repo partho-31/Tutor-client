@@ -7,6 +7,7 @@ import { TuitionProvider } from "./context/TuitionContext.jsx";
 import { TeacherProvider } from "./context/TeacherContext.jsx";
 import { BlogProvider } from "./context/BlogContext.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -16,6 +17,13 @@ createRoot(document.getElementById("root")).render(
           <TeacherProvider>
             <AuthProvider>
               <AppRoutes />
+              <ToastContainer
+                autoClose={3000}
+                closeOnClick
+                pauseOnHover
+                draggable
+                theme="light"
+              />
             </AuthProvider>
           </TeacherProvider>
         </TuitionProvider>

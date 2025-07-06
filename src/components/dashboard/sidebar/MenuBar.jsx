@@ -46,10 +46,20 @@ const MenuBar = () => {
 
         {/* Add Tuition */}
         {(user?.role === "Teacher" || user?.is_staff) && (
-          <Link to="/courses-form">
+          <Link to="courses-form">
             <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
               <GrAddCircle className="text-lg" />
               <span className="font-medium">Add Courses</span>
+            </div>
+          </Link>
+        )}
+
+        {/* Add Blogs */}
+        {(user?.role === "Teacher" || user?.is_staff) && (
+          <Link to="blog/addBlog">
+            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
+              <GrAddCircle className="text-lg" />
+              <span className="font-medium">Add Blogs</span>
             </div>
           </Link>
         )}
@@ -120,7 +130,7 @@ const MenuBar = () => {
         )}
 
         {/* Support or Help  */}
-        {user?.is_staff && (
+        {!user?.is_staff && (
           <Link to="/contact-us">
             <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
               <FaHeadset className="text-lg" />

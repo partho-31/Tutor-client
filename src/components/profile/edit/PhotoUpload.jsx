@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import authApiClient from "../../../services/authApiClient";
+import { toast } from "react-toastify";
 
 function PhotoUpload() {
   const {
@@ -15,13 +16,16 @@ function PhotoUpload() {
       const formData = new FormData();
       formData.append("image", data.image[0]);
 
-      const response = await authApiClient.post(
-        "api/profile/update/",
-        formData
-      );
+      await authApiClient.post("api/profile/update/", formData);
 
-      alert("Photo uploaded successfully!");
-      console.log(response);
+      toast.success("Photo uploaded successfully!", {
+        position: "top-center",
+      });
+    } catch (error) {
+      toast.error("Something went wrong!", {
+        position: "top-center",
+      });
+      return { error: error };
     } finally {
       reset();
     }

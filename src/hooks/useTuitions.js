@@ -9,10 +9,11 @@ const useTuitions = () => {
     const fetchTuitions = async () => {
       setLoading(true);
       try {
-        const res = await apiClient.get('api/tuitions/');
+        const res = await apiClient.get("api/tuitions/");
         setTuitions(res.data);
+        return { success: false, message: "Fetching tuitions successful" };
       } catch (error) {
-        console.log("Fetching tuitions error", error);
+        return { success: false, error: error };
       } finally {
         setLoading(false);
       }
