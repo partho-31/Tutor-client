@@ -72,7 +72,7 @@ const Login = () => {
         </div>
         <div>{errorMsg && <span className="text-white">{errorMsg}</span>}</div>
         <div>
-          <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+          <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label className="block text-white/80 font-serif   text-sm mb-1">
                 Your Email
@@ -127,27 +127,27 @@ const Login = () => {
             >
               {loading ? "Loading.." : "Sign In"}
             </button>
-              <h1 className="text-center font-bold text-white">With</h1>
+              <p className="text-center  font-bold text-white">As</p>
             <div className=" flex gap-3">
               <button
                 onClick={handleAdminLogin}
-                className="w-full py-1 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
+                className="w-full py-2 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
               >
-                Admin Credential
+                Admin
               </button>
 
               <button
                 onClick={handleTeacherLogin}
-                className="w-full py-1 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
+                className="w-full py-2 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
               >
-                Teacher Credential
+                Teacher
               </button>
 
               <button
                 onClick={handleStudentLogin}
-                className="w-full py-1 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
+                className="w-full py-2 bg-white/20 font-bold text-white rounded-lg hover:bg-white/30 transition duration-200"
               >
-                Student Credential
+                Student
               </button>
             </div>
           </form>

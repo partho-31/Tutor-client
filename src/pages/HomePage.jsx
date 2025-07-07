@@ -103,13 +103,13 @@ const HomePage = () => {
             </div>
           )}
           <div className="mt-5 sm:mt-10 grid grid-cols-1 sm:grid-cols-3  lg:grid-cols-4 gap-4">
-            {teachers?.results.slice(0, 4).map((teacher, index) => (
+            {teachers?.results.slice(0, 4).map((teacher) => (
               <Link to={`/teachers/${teacher.id}/`}>
                 <div
                   className="bg-white rounded-xl hover:border hover:border-blue-400 shadow-md p-4 text-center transition duration-300 hover:shadow-lg"
                   data-aos="fade-up"
                   data-aos-delay="100"
-                  key={index}
+                  key={teacher.id}
                 >
                   {/* Profile Image */}
                   <div className="overflow-hidden rounded-full w-32 h-32 mx-auto ring-2 ring-blue-200 transition-transform duration-300 hover:scale-105">

@@ -18,126 +18,152 @@ import { BsEnvelopeArrowDown } from "react-icons/bs";
 const MenuBar = () => {
   const { logOut, user } = useAuthContext();
   return (
-    <div className="mx-6 mt-5 mb-20">
+    <div className="mx-6 pt-5 scroll-hidden  h-screen overflow-y-auto">
       <nav className="space-y-3">
+
         {/* Dashboard  */}
         <Link to="/dashboard">
-          <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-            <MdDashboard className="text-lg" />
-            <span>Dashboard</span>
+          <div className="group  flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-md transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <MdDashboard className="w-5 h-5 text-gray-400 group-hover:text-white" />
+            </div>
+            <span className="text-md font-medium text-gray-700">Dashboard</span>
           </div>
         </Link>
 
         {/* Home  */}
         <Link to="/">
-          <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400 ">
-            <FaHome className="text-lg" />
-            <span>Home</span>
+          <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <FaHome className="w-5 h-5 text-gray-400 group-hover:text-white" />
+            </div>
+            <span className="text-md font-medium text-gray-700">Home</span>
           </div>
         </Link>
 
         {/* Profile View  */}
         <Link to="profile">
-          <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-            <FaUser className="text-lg" />
-            <span>Profile</span>
+          <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <FaUser className="w-5 h-5 text-gray-400 group-hover:text-white" />
+            </div>
+            <span className="text-md font-medium text-gray-700">Profile</span>
           </div>
         </Link>
 
         {/* Add Tuition */}
         {(user?.role === "Teacher" || user?.is_staff) && (
           <Link to="courses-form">
-            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-              <GrAddCircle className="text-lg" />
-              <span className="font-medium">Add Courses</span>
+            <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <GrAddCircle className="w-5 h-5 text-gray-400 group-hover:text-white" />
             </div>
+            <span className="text-md font-medium text-gray-700">Add Courses</span>
+          </div>
           </Link>
         )}
 
         {/* Add Blogs */}
         {(user?.role === "Teacher" || user?.is_staff) && (
           <Link to="blog/addBlog">
-            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-              <GrAddCircle className="text-lg" />
-              <span className="font-medium">Add Blogs</span>
+            <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <GrAddCircle className="w-5 h-5 text-gray-400 group-hover:text-white" />
             </div>
+            <span className="text-md font-medium text-gray-700">Add Blogs</span>
+          </div>
           </Link>
         )}
 
         {/* Teachers List  */}
         {user?.is_staff && (
           <Link to="teachersList">
-            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-              <LiaChalkboardTeacherSolid className="text-lg" />
-              <span className="font-medium">Teachers List</span>
+          <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <LiaChalkboardTeacherSolid className="w-5 h-5 text-gray-400 group-hover:text-white" />
             </div>
+            <span className="text-md font-medium text-gray-700">Teachers List</span>
+          </div>
           </Link>
         )}
 
         {/* Student List  */}
         {user?.is_staff && (
           <Link to="studentsList">
-            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-              <PiStudent className="text-lg" />
-              <span className="font-medium">Students List</span>
+            <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <PiStudent className="w-5 h-5 text-gray-400 group-hover:text-white" />
             </div>
+            <span className="text-md font-medium text-gray-700">Students List</span>
+          </div>
           </Link>
         )}
 
         {/* Payment History  */}
         <Link to="paymetHistory">
-          <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-            <FaHistory className="text-lg" />
-            <span>Payment History</span>
+          <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <FaHistory className="w-5 h-5 text-gray-400 group-hover:text-white" />
+            </div>
+            <span className="text-md font-medium text-gray-700">Payment History</span>
           </div>
         </Link>
 
         {/* Change Password  */}
         <Link to="changePassword">
-          <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-            <FaKey className="text-lg" />
-            <span>Change Password</span>
+          <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <FaKey className="w-5 h-5 text-gray-400 group-hover:text-white" />
+            </div>
+            <span className="text-md font-medium text-gray-700">Change Password</span>
           </div>
         </Link>
 
         {/* Forgot Password  */}
         <Link to="/forgetPassword">
-          <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-            <FaQuestionCircle className="text-lg" />
-            <span>Forgot Password</span>
+          <div className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <FaQuestionCircle className="w-5 h-5 text-gray-400 group-hover:text-white" />
+            </div>
+            <span className="text-md font-medium text-gray-700">Forgot Password</span>
           </div>
         </Link>
 
         {/* Sign Out  */}
-        <div
-          onClick={logOut}
-          className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400"
-        >
-          <FaSignOutAlt className="text-lg" />
-          <span>Sign Out</span>
-        </div>
+        <div onClick={logOut} className="group mt-3 flex items-center  space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <FaSignOutAlt className="w-5 h-5 text-gray-400 group-hover:text-white" />
+            </div>
+            <span className="text-md font-medium text-gray-700">Sign Out</span>
+          </div>
 
         <div className=" border-t border-gray-600 border-opacity-30 " />
 
         {/* Contact Inbox  */}
         {user?.is_staff && (
           <Link to="contact/messages">
-            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-              <BsEnvelopeArrowDown className="text-lg" />
-              <span>Messages</span>
+            <div className="group mt-3 flex items-center space-x-2 p-2 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <BsEnvelopeArrowDown className="w-5 h-5 text-gray-400 group-hover:text-white" />
             </div>
+            <span className="text-md font-medium text-gray-700">Contact</span>
+          </div>
           </Link>
         )}
 
         {/* Support or Help  */}
         {!user?.is_staff && (
           <Link to="/contact-us">
-            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-blue-400">
-              <FaHeadset className="text-lg" />
-              <span>Support / Help</span>
+            <div className="group mt-3 flex items-center space-x-2 px-2 py-1 rounded-lg hover:bg-white hover:shadow-lg transition">
+            <div className="p-1.5 rounded-md shadow-md shadow-gray-300 group-hover:bg-blue-600 group-hover:shadow-md transition">
+              <FaHeadset className="w-5 h-5 text-gray-400 group-hover:text-white" />
             </div>
+            <span className="text-md font-medium text-gray-700">Support / Help</span>
+          </div>
           </Link>
         )}
+
+        <div className="h-40"></div>
       </nav>
     </div>
   );

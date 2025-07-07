@@ -44,7 +44,7 @@ const Navbar = () => {
                 <Link to="teachers">Mentors</Link>
               </li>
               <li>
-              <Link to="blog">Blogs</Link>
+                <Link to="blog">Blogs</Link>
               </li>
               <li>
                 <Link to="about-us">About Us</Link>
@@ -54,7 +54,9 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <p className=" text-blue-600 text-lg lg:text-3xl font-bold lg:ml-5">EduPoint</p>
+          <p className=" text-blue-600 text-lg lg:text-3xl font-bold lg:ml-5">
+            EduPoint
+          </p>
         </div>
         <div className="navbar-center hidden lg:flex text-gray-500  font-bold ">
           <ul className="menu menu-horizontal px-1">
@@ -62,19 +64,29 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link className="hover:text-blue-600" to="courses">Courses</Link>
+              <Link className="hover:text-blue-600" to="courses">
+                Courses
+              </Link>
             </li>
             <li>
-              <Link className="hover:text-blue-600" to="teachers">Mentors</Link>
+              <Link className="hover:text-blue-600" to="teachers">
+                Mentors
+              </Link>
             </li>
             <li>
-              <Link className="hover:text-blue-600" to="blog">Blogs</Link>
+              <Link className="hover:text-blue-600" to="blog">
+                Blogs
+              </Link>
             </li>
             <li>
-              <Link className="hover:text-blue-600" to="about-us">About Us</Link>
+              <Link className="hover:text-blue-600" to="about-us">
+                About Us
+              </Link>
             </li>
             <li>
-              <Link className="hover:text-blue-600" to="contact-us">Contact Us</Link>
+              <Link className="hover:text-blue-600" to="contact-us">
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
@@ -97,10 +109,11 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
-                <Link to="dashboard"><li><button className="justify-between">Dashboard</button></li> </Link>
-                <li>
-                  <a>Settings</a>
-                </li>
+                <Link to="dashboard">
+                  <li>
+                    <button className="justify-between">Dashboard</button>
+                  </li>{" "}
+                </Link>
                 <li>
                   <button onClick={logOut}>Sign Out</button>
                 </li>

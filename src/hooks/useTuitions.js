@@ -1,9 +1,24 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
+import authApiClient from "../services/authApiClient";
 
 const useTuitions = () => {
   const [tuitions, setTuitions] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const [payments, setPayment] = useState([]);
+
+  useEffect(() => {
+    const FetchPaymentHistory = async () => {
+      try {
+        const res = await authApiClient.get("api/payment_history/");
+        setPayment(res.data);
+      } catch (error) {
+        return {success: false, message: "Failed to fetch payment_history", error:error}
+      }
+    };
+    FetchPaymentHistory();
+  }, []);
 
   useEffect(() => {
     const fetchTuitions = async () => {
@@ -24,6 +39,7 @@ const useTuitions = () => {
 
   return {
     tuitions,
+    payments,
     loading,
   };
 };

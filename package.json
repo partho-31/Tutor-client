@@ -13,6 +13,8 @@
     "@tailwindcss/vite": "^4.1.4",
     "aos": "^2.3.4",
     "axios": "^1.9.0",
+    "echarts": "^5.6.0",
+    "echarts-for-react": "^3.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.1",

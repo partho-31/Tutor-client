@@ -1,24 +1,8 @@
-import { useEffect, useState } from "react";
-import authApiClient from "../../../services/authApiClient";
+import useTuitionContext from "../../../hooks/useTuitionContext";
 
 const PaymentHistory = () => {
-  const [payments, setPayment] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const {payments,loading} = useTuitionContext()
 
-  useEffect(() => {
-    const FetchPaymentHistory = async () => {
-      setLoading(true);
-      try {
-        const res = await authApiClient.get("api/payment_history/");
-        setPayment(res.data);
-      } catch (error) {
-        console.log("Error while fetching Payment history", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    FetchPaymentHistory();
-  }, []);
 
   return (
     <div className="flex-1 mx-auto">

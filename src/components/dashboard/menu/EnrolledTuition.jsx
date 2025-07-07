@@ -3,11 +3,11 @@ import { Link } from "react-router";
 
 const EnrolledTuition = ({user}) => {
   return (
-    <div className="w-full flex-1 p-6 md:p-10 space-y-6">
+    <div className="w-full flex-1 p-6 space-y-3 grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
       {user?.applied_tuition?.map((tuition, index) => (
         <Link to={`/courses/${tuition.details.id}/` }  key={index}>
           <div
-            className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow mb-4"
+            className=" bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow sm:mb-4"
            
           >
             <div className="flex items-start gap-4">
@@ -15,7 +15,7 @@ const EnrolledTuition = ({user}) => {
                 <FaGraduationCap className="text-blue-600 text-xl" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-gray-900">
+                <h3 className="text-xl overflow-hidden line-clamp-1 font-semibold text-gray-900">
                   {tuition.details.title}
                 </h3>
                 <p className="text-base text-gray-700">
