@@ -35,7 +35,7 @@ const useTuitions = () => {
     };
 
     fetchTuitions();
-  }, [tuitions?.results.length]);
+  }, [tuitions?.length]);
 
   return {
     tuitions,

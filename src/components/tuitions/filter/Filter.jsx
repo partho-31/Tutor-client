@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   FiChevronDown,
   FiFilter,
@@ -6,8 +7,6 @@ import {
 } from "react-icons/fi";
 
 const Filter = ({
-  showMobileFilters,
-  handleMobileFilter,
   searchBySub,
   handleSearchBySub,
   searchByClass,
@@ -15,10 +14,10 @@ const Filter = ({
   ordering,
   setOrdering
 }) => {
-
+   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const orderingOptions = [
-    { option: "Newest First", value: "-created_at" },
-    { option: "Oldest First", value: "created_at" },
+    { option: "Lower to Higher", value: "class" },
+    { option: "Higher to Lower", value: "-class" },
   ];
 
   const clearFiltering = () => {
@@ -28,10 +27,10 @@ const Filter = ({
   };
 
   return (
-    <div className="">
+    <div>
       <div className="w-full sm:w-1/4  flex items-center justify-between">
         <button
-          onClick={() => handleMobileFilter(!showMobileFilters)}
+          onClick={()=>setShowMobileFilters(!showMobileFilters)}
           className="md:hidden flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
         >
           <FiFilter /> Filters
@@ -107,7 +106,7 @@ const Filter = ({
               value={ordering}
               onChange={(e) => setOrdering(e.target.value)}
             >
-              <option>Select Order</option>
+              <option>Select Order By Class</option>
               {orderingOptions.map((option, index) => (
                 <option key={index} value={option.value}>
                   {option.option}

@@ -2,7 +2,6 @@ import { Link } from "react-router";
 
 
 const TuitionCard = ({ tuition }) => {
-  console.log(tuition)
 
   const tuition_url = `https://res.cloudinary.com/dinzf10l3/${tuition.image}`;
   return (
@@ -32,12 +31,12 @@ const TuitionCard = ({ tuition }) => {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl overflow-hidden line-clamp-2 font-bold text-blue-500 mb-2">
+            <h3 className="text-xl overflow-hidden line-clamp-1 font-bold text-blue-500 mb-2">
               {tuition.title}
             </h3>
 
             {/* Subtitle */}
-            <p className="text-gray-600 overflow-hidden line-clamp-3 text-sm mb-4">{tuition.sub_title}</p>
+            <p className="text-gray-600 overflow-hidden line-clamp-2 text-sm mb-4">{tuition.sub_title}</p>
 
             {/* Fee */}
             <div className="flex items-center text-gray-700 mb-5">
@@ -50,7 +49,7 @@ const TuitionCard = ({ tuition }) => {
 
             {/* Button */}
             <button className="flex items-center font-medium ">
-              <span className="mr-1 text-green-500">Learn More...</span>
+              <span className="mr-1 text-blue-600">Learn More →</span>
             </button>
           </div>
         </div>

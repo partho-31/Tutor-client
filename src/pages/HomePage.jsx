@@ -47,7 +47,8 @@ const HomePage = () => {
             </div>
           )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-            {tuitions?.results.slice(0, 4).map((tuition, index) => (
+            {tuitions?.slice(0, 4).map((tuition, index) => (
+              <Link to={`/courses/${tuition.id}/`}>
               <div
                 className="bg-white hover:border hover:border-blue-400 rounded-xl overflow-hidden "
                 key={index}
@@ -75,7 +76,7 @@ const HomePage = () => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div></Link>
             ))}
           </div>
 

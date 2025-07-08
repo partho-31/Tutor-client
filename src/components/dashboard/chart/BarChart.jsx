@@ -6,7 +6,7 @@ const BarChart = () => {
 
   const subjectCounts = {};
 
-  tuitions?.results.forEach((course) => {
+  tuitions?.forEach((course) => {
     const subject = course?.subjects?.toLowerCase();
 
     if (subjectCounts[subject]) {

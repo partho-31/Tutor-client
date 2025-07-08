@@ -9,9 +9,11 @@ import {
   FaCalendarAlt,
   FaCheckCircle,
 } from "react-icons/fa";
+import useTuitionContext from "../hooks/useTuitionContext";
 
 const Dashboard = () => {
   const { user } = useAuthContext();
+  const { tuitions } = useTuitionContext()
 
   return (
     <div className="mx-auto">
@@ -22,10 +24,10 @@ const Dashboard = () => {
             <FaUserGraduate className="text-blue-500 text-3xl" />
             <div className="flex flex-col items-center ">
               <p className="text-sm text-gray-600 font-medium">
-                Total Enrollments
+                {user.is_staff ? "Available Courses ": user.role === "Teacher"? "Provided Courses" : " Total Enrollments" }
               </p>
               <h3 className="text-xl font-bold text-gray-800">
-                {user.applied_tuition.length}
+                {user.is_staff ? tuitions.length : user.role === "Teacher"? user.provided_tuitions.length : user?.applied_tuition.length }
               </h3>
             </div>
           </div>

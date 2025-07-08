@@ -11,9 +11,9 @@ const Tuitions = () => {
   const [searchBySub, setSearchBySub] = useState("");
   const [searchByClass, setSearchByClass] = useState("");
   const [ordering, setOrdering] = useState("");
-
+  
   useEffect(() => {
-    let filtered = tuitions?.results?.filter((tuition) => {
+    let filtered = tuitions?.filter((tuition) => {
       const matcheClass = searchByClass
         ? tuition.classes == searchByClass
         : true;
@@ -28,18 +28,20 @@ const Tuitions = () => {
     if (ordering) {
       filtered = filtered.slice();
       filtered.sort((a, b) => {
+        console.log(a)
         switch (ordering) {
-          case "created_at":
-            return new Date(a.created_at) - new Date(b.created_at);
-          case "-created_at":
-            return new Date(b.created_at) - new Date(a.created_at);
+          case "class":
+            return a.classes - b.classes;
+          case "-class":
+            return b.classes - a.classes;
           default:
             return 0;
         }
       });
     }
     setFilteredTuition(filtered);
-  }, [ordering, searchByClass, searchBySub, tuitions?.results]);
+  }, [ordering, searchByClass, searchBySub, tuitions]);
+ 
 
   return (
     <div className="bg-gray-200  flex flex-col sm:flex-row gap-6 px-6 sm:px-8 ">

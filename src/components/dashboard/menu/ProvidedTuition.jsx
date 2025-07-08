@@ -3,10 +3,11 @@ import useAuthContext from "../../../hooks/useAuthContext";
 
 const ProvidedTuition = () => {
   const { user } = useAuthContext()
+  console.log(user)
   return (
     <div className="w-full flex-1 p-6 space-y-3 grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
     
-      {user?.provided_tuition?.map((tuition, index) => (
+      {user?.provided_tuitions?.map((tuition, index) => (
         <div
           className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow sm:mb-4"
           key={index}
@@ -17,13 +18,13 @@ const ProvidedTuition = () => {
             </div>
             <div className="space-y-2">
               <h3 className="text-xl overflow-hidden line-clamp-1 font-semibold text-gray-900">
-                {tuition.details.title}
+                {tuition?.title}
               </h3>
               <p className="text-base text-gray-700">
-                <span className="font-medium">Subject:</span> {tuition.details.subjects}
+                <span className="font-medium">Subject:</span> {tuition?.subjects}
               </p>
               <p className="text-sm text-gray-500">
-                Enrollment ID: {tuition.details.id}
+                Enrollment ID: {tuition?.id}
               </p>
             </div>
           </div>

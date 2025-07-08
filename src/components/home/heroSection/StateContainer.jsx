@@ -23,7 +23,7 @@ const StateContainer = ({tuitions}) => {
         {/* Online Courses */}
         <div className="w-1/2 sm:w-1/2 md:w-1/4 p-2 sm:p-5 md:p-6 text-center border-b sm:border-b md:border-b-0 md:border-r border-gray-200">
           <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-600">
-            {tuitions?.results.length}
+            {tuitions?.length}
           </h2>
           <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 mt-1">
             Online Courses
@@ -43,7 +43,7 @@ const StateContainer = ({tuitions}) => {
         {/* Stat item - Students */}
         <div className="w-1/2 sm:w-1/2 md:w-1/4 p-2 sm:p-5 md:p-6 text-center">
           <h2 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-600">
-            {students.length}
+            {students?.length}
           </h2>
           <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 mt-1">
             Students
